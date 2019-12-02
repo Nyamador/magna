@@ -6,6 +6,9 @@ __pycache__/
 #Virtualenv
 env/
 
+#npm
+node_modules/
+
 # C extensions
 *.so
 
