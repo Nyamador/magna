@@ -41,9 +41,11 @@ INSTALLED_APPS = [
     #Custom Apps
     'pages.apps.PagesConfig',
     'users.apps.UsersConfig',
+    'events.apps.EventsConfig',
     #3rd party
     'allauth',
     'allauth.account',
+    'widget_tweaks'
 ]
 
 MIDDLEWARE = [
@@ -151,7 +153,11 @@ ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 
 ACCOUNT_AUTHENTICATION_METHOD = "email"
 
-# ACCOUNT_FORMS ={}
+ACCOUNT_UNIQUE_EMAIL  = True
+
+ACCOUNT_FORMS ={
+    'signup': 'users.forms.MagnaSignUpForm',
+}
 
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

@@ -1,0 +1,30 @@
+/* AUTH */
+.auth-body{
+    height: 100vh;
+    justify-content: center;
+}
+
+
+.validate-form,.auth-header{
+    padding: 0 20px;
+}
+
+.auth-description{
+    padding: 0 20px;  
+}
+
+.form-container{
+    /* justify-content: center; */
+}
+
+.iti { width: 100%; }
+
+.iti--allow-dropdown:first-child{
+    width: 100%;
+    position: relative;
+    border-bottom: 2px solid #c7c7c7;
+    margin-bottom: 37px;
+
+    
+}
+/* [AUTH] */
