@@ -1,1 +1,4 @@
 <h1>Home</h1>
+{% if request.user.is_authenticated %}
+Logged in as <strong>{{ user }}</strong>
+{% endif %}

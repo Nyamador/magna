@@ -95,17 +95,34 @@ class Ticket(models.Model):
     def __str__(self):
         return self.name
 
-# class GuestList(models.Model):
-#     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-#     event = models.ForeignKey(Event, on_delete=models.CASCADE)
-#     name = models.CharField(verbose_name="Guest List Name", max_length=100)
+class GuestList(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    name = models.CharField(verbose_name="Guest List Name", max_length=100)
 
-#     def __str__(self):
-#         return self.name
+    def __str__(self):
+        return self.name
 
 
-# class Guest(models.Model):
-#     first_name = models.CharField(verbose_name="First Name", max_length=100)
-#     last_name = models.CharField(verbose_name="Last Name", max_length=100)
-#     email = models.EmailField(verbose_name="Guest Email Addrress", max_length=100, null=True , blank=True)
-#     # ticket count 
+class Guest(models.Model):
+    first_name = models.CharField(verbose_name="First Name", max_length=50)
+    last_name = models.CharField(verbose_name="Last Name", max_length=50)
+    email = models.EmailField(verbose_name="Guest Email Addrress", max_length=100, null=True , blank=True)
+    guest_list = models.ForeignKey(GuestList, on_delete=models.CASCADE)
+
+
+    def __str_(self):
+        return f'{self.first_name} {self.last_name}'
+
+
+class GuestTicket(models.Model):
+    ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    quantity  = models.PositiveIntegerField(verbose_name="Ticket Count", default=1)
+    guest = models.ForeignKey(Guest, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.guest} : {self.ticket}'
+
+
+

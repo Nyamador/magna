@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     #3rd party
     'allauth',
     'allauth.account',
-    'widget_tweaks'
+    'widget_tweaks',
+    'webpack_loader',
 ]
 
 MIDDLEWARE = [
@@ -128,7 +129,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static_build'), #builds from webpack
+)
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
+
 MEDIA_URL = '/media/'
 
 
@@ -165,3 +173,33 @@ if DEBUG:
 LOGIN_REDIRECT_URL = 'home'
 
 LOGOUT_REDIRECT_URL = 'home'
+
+
+#Webpack Loader
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'CACHE': not DEBUG,
+        'BUNDLE_DIR_NAME': os.path.join(BASE_DIR, 'static_build/'),#must end with slash
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
+        'POLL_INTERVAL': 0.1,
+        'TIMEOUT': None,
+        'IGNORE': [r'.+\.hot-update.js', r'.+\.map']
+    },
+    # 'DASHBOARD': {
+    #     'CACHE': not DEBUG,
+    #     'BUNDLE_DIR_NAME': 'dashboard_bundles/',
+    #     'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats-dashboard.json'),
+    #     'POLL_INTERVAL': 0.1,
+    #     'TIMEOUT': None,
+    #     'IGNORE': [r'.+\.hot-update.js', r'.+\.map']
+    # }
+}
+#{% load render_bundle from webpack_loader %}
+#{% render_bundle 'main' %}
+# {% render_bundle 'main' 'js' 'DEFAULT' %}
+#{% render_bundle 'main' 'js' 'DASHBOARD' %}
+
+#image bundles
+#{% load webpack_static from webpack_loader %}
+#<!-- render full public path of logo.png -->
+#<img src="{% webpack_static 'logo.png' %}"/>
