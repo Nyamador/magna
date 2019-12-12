@@ -1,7 +1,8 @@
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
-from .managers import MagnaUserManager
 from django.db import models
+from events.models import Ticket
+from .managers import MagnaUserManager
 
 
 class MagnaUser(AbstractUser):
@@ -41,4 +42,20 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'{self.prefix} {self.firstname} {self.lastname} , Org: {self.company}'
-    
+
+
+class Cart(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+
+    def __str__(self):
+        return f'{self.user}\'s cart'
+
+
+class Cartitem(models.Model):
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE)
+    quantity = models.IntegerField(verbose_name="Ticket", default=1)
+
+    def __str__(self):
+        return f'{self.cart} : {self.ticket}'

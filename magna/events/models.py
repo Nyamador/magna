@@ -1,5 +1,8 @@
+import uuid
 from django.conf import settings
 from django.db import models
+from django.urls import reverse
+# from django.urls
 
 
 class Organizer(models.Model):
@@ -42,7 +45,9 @@ class Event(models.Model):
         ('TO',  'Travel & Outdoor'),
         ('Other','Other'),
     )
+    event_id = models.UUIDField(verbose_name="Event Id",unique=True, editable=False, default=uuid.uuid4())
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    # event_type = models.CharField(verbose_name="Event Type", max_length=5, choices=)
     category = models.CharField(verbose_name="Event Category", choices=category_list, max_length=10)
     name = models.CharField(verbose_name="Event Name", max_length=255)
     organizer = models.ForeignKey(Organizer, on_delete=models.CASCADE)
@@ -57,6 +62,9 @@ class Event(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('event-detail', args=[str(self.event_id)])
 
 
 class Ticket(models.Model):
@@ -93,7 +101,7 @@ class Ticket(models.Model):
 
 
     def __str__(self):
-        return self.name
+        return f'{self.name} : {self.event}'
 
 class GuestList(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -111,7 +119,7 @@ class Guest(models.Model):
     guest_list = models.ForeignKey(GuestList, on_delete=models.CASCADE)
 
 
-    def __str_(self):
+    def __str__(self):
         return f'{self.first_name} {self.last_name}'
 
 
@@ -123,6 +131,4 @@ class GuestTicket(models.Model):
 
     def __str__(self):
         return f'{self.guest} : {self.ticket}'
-
-
 

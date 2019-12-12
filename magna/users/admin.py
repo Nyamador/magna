@@ -4,7 +4,7 @@ from django.contrib.auth.admin import UserAdmin
 
 
 from .forms import CustomUserChangeForm,MagnaUserCreationForm
-from .models import MagnaUser, Profile
+from .models import MagnaUser, Profile, Cart,Cartitem
 
 class MagnaUserAdmin(UserAdmin):
     model = MagnaUser
@@ -14,3 +14,5 @@ class MagnaUserAdmin(UserAdmin):
 
 admin.site.register(MagnaUser, MagnaUserAdmin)
 admin.site.register(Profile)
+admin.site.register(Cart)
+admin.site.register(Cartitem)

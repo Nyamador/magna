@@ -1,4 +1,4 @@
-# from django.shortcuts import render
+# from django.views.generic import DetailView
 # from allauth.account.views import LoginView
 
 # # Create your views here.

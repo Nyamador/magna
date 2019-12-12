@@ -12,6 +12,7 @@ class AuthenticationTests(TestCase):
         )
     
     def test_user_login_sucess(self):
+        self.client.logout()
         self.client.login(email='test@foo.com', password='testingpass2032')
         response =  self.client.get('accounts/login')
         self.assertRedirects(response, '/')
