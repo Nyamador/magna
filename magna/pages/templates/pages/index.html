@@ -2,16 +2,17 @@
 {% if request.user.is_authenticated %}
 Logged in as <strong>{{ user }}</strong><br>
 <a href="{% url 'account_logout' %}">Logout</a><br>
-<a href="{% url 'create-event' %}">Create Event</a>
+
 
 
 <h1>
     All Events
 </h1>
 
+<h2>{{note}}</h2>
 <div style="padding:20px;">
     {% for event in events %}
-    <a href="{{ event.get_absolute_url }}">
+    <!-- <a href=" event.get_absolute_url "> -->
         <h3>{{ event.name }}</h3>
         <img src="{{ event.image.url }}" />
     </a>

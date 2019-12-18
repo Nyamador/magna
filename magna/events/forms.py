@@ -4,7 +4,7 @@ from .models import Event, Ticket, Guest, GuestList
 class EventCreationForm(ModelForm):
     class Meta:
         model = Event
-        exclude = ['user', 'image']
+        exclude = ['image', 'description']
 
 class TicketCreationForm(ModelForm):
     class Meta:
