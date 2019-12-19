@@ -2,6 +2,7 @@ import uuid
 from django.conf import settings
 from django.db import models
 from django.urls import reverse
+from django.utils.text import slugify
 # from django.urls
 
 
@@ -46,6 +47,7 @@ class Event(models.Model):
         ('Other','Other'),
     )
     event_id = models.UUIDField(verbose_name="Event Id",unique=True, editable=False, default=uuid.uuid4())
+    slug = models.SlugField(verbose_name="Slug", max_length=100, unique=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     # event_type = models.CharField(verbose_name="Event Type", max_length=5, choices=)
     category = models.CharField(verbose_name="Event Category", choices=category_list, max_length=10)
@@ -64,8 +66,19 @@ class Event(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('event-detail', args=[str(self.event_id)])
+        return reverse('event-information', args=[slugify(self.name)])
 
+    def send_event_creation_email(self):
+        pass
+
+    def save(self, *args, **kwargs):
+        """
+        Auto populating the SlugField with the slug friendly version of the product name
+        """
+        self.slug = slugify(self.name)
+        super(Event, self).save(*args, **kwargs)
+
+    
 
 class Ticket(models.Model):
     ticket_type = (
