@@ -1,0 +1,824 @@
+{% extends 'events/dashboard/_base.html' %}
+{% block content %}
+    <!-- MAIN CONTENT
+    ================================================== -->
+    <div class="main-content">
+
+      
+        <nav class="navbar navbar-expand-md navbar-light d-none d-md-flex" id="topbar">
+          <div class="container-fluid">
+
+            <!-- Form -->
+            <form class="form-inline mr-4 d-none d-md-flex">
+              <div class="input-group input-group-flush input-group-merge" data-toggle="lists" data-options='{"valueNames": ["name"]}'>
+
+                <!-- Input -->
+                <input type="search" class="form-control form-control-prepended dropdown-toggle search" data-toggle="dropdown" placeholder="Search" aria-label="Search">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="fe fe-search"></i>
+                  </div>
+                </div>
+
+                <!-- Menu -->
+                <div class="dropdown-menu dropdown-menu-card">
+                  <div class="card-body">
+
+                    <!-- List group -->
+                    <div class="list-group list-group-flush list my-n3">
+                      <a href="team-overview.html" class="list-group-item px-0">
+                        <div class="row align-items-center">
+                          <div class="col-auto">
+                    
+                            <!-- Avatar -->
+                            <div class="avatar">
+                              <img src="./assets/img/avatars/teams/team-logo-1.jpg" alt="..." class="avatar-img rounded">
+                            </div>
+
+                          </div>
+                          <div class="col ml-n2">
+
+                            <!-- Title -->
+                            <h4 class="text-body mb-1 name">
+                              Airbnb
+                            </h4>
+
+                            <!-- Time -->
+                            <p class="small text-muted mb-0">
+                              <span class="fe fe-clock"></span> <time datetime="2018-05-24">Updated 2hr ago</time>
+                            </p>
+                    
+                          </div>
+                        </div> <!-- / .row -->
+                      </a>
+                      <a href="team-overview.html" class="list-group-item px-0">
+                        <div class="row align-items-center">
+                          <div class="col-auto">
+                    
+                            <!-- Avatar -->
+                            <div class="avatar">
+                              <img src="./assets/img/avatars/teams/team-logo-2.jpg" alt="..." class="avatar-img rounded">
+                            </div>
+
+                          </div>
+                          <div class="col ml-n2">
+
+                            <!-- Title -->
+                            <h4 class="text-body mb-1 name">
+                              Medium Corporation
+                            </h4>
+
+                            <!-- Time -->
+                            <p class="small text-muted mb-0">
+                              <span class="fe fe-clock"></span> <time datetime="2018-05-24">Updated 2hr ago</time>
+                            </p>
+                    
+                          </div>
+                        </div> <!-- / .row -->
+                      </a>
+                      <a href="project-overview.html" class="list-group-item px-0">
+
+                        <div class="row align-items-center">
+                          <div class="col-auto">
+                    
+                            <!-- Avatar -->
+                            <div class="avatar avatar-4by3">
+                              <img src="./assets/img/avatars/projects/project-1.jpg" alt="..." class="avatar-img rounded">
+                            </div>
+
+                          </div>
+                          <div class="col ml-n2">
+
+                            <!-- Title -->
+                            <h4 class="text-body mb-1 name">
+                              Homepage Redesign
+                            </h4>
+
+                            <!-- Time -->
+                            <p class="small text-muted mb-0">
+                              <span class="fe fe-clock"></span> <time datetime="2018-05-24">Updated 4hr ago</time>
+                            </p>
+                    
+                          </div>
+                        </div> <!-- / .row -->
+
+                      </a>
+                      <a href="project-overview.html" class="list-group-item px-0">
+
+                        <div class="row align-items-center">
+                          <div class="col-auto">
+                    
+                            <!-- Avatar -->
+                            <div class="avatar avatar-4by3">
+                              <img src="./assets/img/avatars/projects/project-2.jpg" alt="..." class="avatar-img rounded">
+                            </div>
+
+                          </div>
+                          <div class="col ml-n2">
+
+                            <!-- Title -->
+                            <h4 class="text-body mb-1 name">
+                              Travels & Time
+                            </h4>
+
+                            <!-- Time -->
+                            <p class="small text-muted mb-0">
+                              <span class="fe fe-clock"></span> <time datetime="2018-05-24">Updated 4hr ago</time>
+                            </p>
+                    
+                          </div>
+                        </div> <!-- / .row -->
+
+                      </a>
+                      <a href="project-overview.html" class="list-group-item px-0">
+
+                        <div class="row align-items-center">
+                          <div class="col-auto">
+                    
+                            <!-- Avatar -->
+                            <div class="avatar avatar-4by3">
+                              <img src="./assets/img/avatars/projects/project-3.jpg" alt="..." class="avatar-img rounded">
+                            </div>
+
+                          </div>
+                          <div class="col ml-n2">
+
+                            <!-- Title -->
+                            <h4 class="text-body mb-1 name">
+                              Safari Exploration
+                            </h4>
+
+                            <!-- Time -->
+                            <p class="small text-muted mb-0">
+                              <span class="fe fe-clock"></span> <time datetime="2018-05-24">Updated 4hr ago</time>
+                            </p>
+                    
+                          </div>
+                        </div> <!-- / .row -->
+              
+                      </a>
+                      <a href="profile-posts.html" class="list-group-item px-0">
+              
+                        <div class="row align-items-center">
+                          <div class="col-auto">
+                    
+                            <!-- Avatar -->
+                            <div class="avatar">
+                              <img src="./assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
+                            </div>
+
+                          </div>
+                          <div class="col ml-n2">
+                    
+                            <!-- Title -->
+                            <h4 class="text-body mb-1 name">
+                              Dianna Smiley
+                            </h4>
+
+                            <!-- Status -->
+                            <p class="text-body small mb-0">
+                              <span class="text-success">●</span> Online
+                            </p>
+
+                          </div>
+                        </div> <!-- / .row -->
+
+                      </a>
+                      <a href="profile-posts.html" class="list-group-item px-0">
+
+                        <div class="row align-items-center">
+                          <div class="col-auto">
+                    
+                            <!-- Avatar -->
+                            <div class="avatar">
+                              <img src="./assets/img/avatars/profiles/avatar-2.jpg" alt="..." class="avatar-img rounded-circle">
+                            </div>
+
+                          </div>
+                          <div class="col ml-n2">
+                    
+                            <!-- Title -->
+                            <h4 class="text-body mb-1 name">
+                              Ab Hadley
+                            </h4>
+
+                            <!-- Status -->
+                            <p class="text-body small mb-0">
+                              <span class="text-danger">●</span> Offline
+                            </p>
+
+                          </div>
+                        </div> <!-- / .row -->
+              
+                      </a>
+                    </div>
+          
+                  </div>
+                </div> <!-- / .dropdown-menu -->
+
+              </div>
+            </form>
+
+            <!-- User -->
+            <div class="navbar-user">
+      
+              <!-- Dropdown -->
+              <div class="dropdown mr-4 d-none d-md-flex">
+        
+                <!-- Toggle -->
+                <a href="#" class="navbar-user-link" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="icon active">
+                    <i class="fe fe-bell"></i>
+                  </span>
+                </a>
+
+                <!-- Menu -->
+                <div class="dropdown-menu dropdown-menu-right dropdown-menu-card">
+                  <div class="card-header">
+                    <div class="row align-items-center">
+                      <div class="col">
+                
+                        <!-- Title -->
+                        <h5 class="card-header-title">
+                          Notifications
+                        </h5>
+
+                      </div>
+                      <div class="col-auto">
+                
+                        <!-- Link -->
+                        <a href="#!" class="small">
+                          View all
+                        </a>
+
+                      </div>
+                    </div> <!-- / .row -->
+                  </div> <!-- / .card-header -->
+                  <div class="card-body">
+
+                    <!-- List group -->
+                    <div class="list-group list-group-flush my-n3">
+                      <a class="list-group-item px-0" href="#!">
+              
+                        <div class="row">
+                          <div class="col-auto">
+                    
+                            <!-- Avatar -->
+                            <div class="avatar avatar-sm">
+                              <img src="./assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
+                            </div>
+
+                          </div>
+                          <div class="col ml-n2">
+                    
+                            <!-- Content -->
+                            <div class="small text-muted">
+                              <strong class="text-body">Dianna Smiley</strong> shared your post with <strong class="text-body">Ab Hadley</strong>, <strong class="text-body">Adolfo Hess</strong>, and <strong class="text-body">3 others</strong>.
+                            </div>
+
+                          </div>
+                          <div class="col-auto">
+
+                            <small class="text-muted">
+                              2m
+                            </small>
+                    
+                          </div>
+                        </div> <!-- / .row -->
+
+                      </a>
+                      <a class="list-group-item px-0" href="#!">
+
+                        <div class="row">
+                          <div class="col-auto">
+                    
+                            <!-- Avatar -->
+                            <div class="avatar avatar-sm">
+                              <img src="./assets/img/avatars/profiles/avatar-2.jpg" alt="..." class="avatar-img rounded-circle">
+                            </div>
+
+                          </div>
+                          <div class="col ml-n2">
+                    
+                            <!-- Content -->
+                            <div class="small text-muted">
+                              <strong class="text-body">Ab Hadley</strong> reacted to your post with a 😍
+                            </div>
+
+                          </div>
+                          <div class="col-auto">
+
+                            <small class="text-muted">
+                              2m
+                            </small>
+                    
+                          </div>
+                        </div> <!-- / .row -->
+
+                      </a>
+                      <a class="list-group-item px-0" href="#!">
+
+                        <div class="row">
+                          <div class="col-auto">
+                    
+                            <!-- Avatar -->
+                            <div class="avatar avatar-sm">
+                              <img src="./assets/img/avatars/profiles/avatar-3.jpg" alt="..." class="avatar-img rounded-circle">
+                            </div>
+
+                          </div>
+                          <div class="col ml-n2">
+                    
+                            <!-- Content -->
+                            <div class="small text-muted">
+                              <strong class="text-body">Adolfo Hess</strong> commented <blockquote class="text-body">“I don’t think this really makes sense to do without approval from Johnathan since he’s the one...” </blockquote>
+                            </div>
+
+                          </div>
+                          <div class="col-auto">
+
+                            <small class="text-muted">
+                              2m
+                            </small>
+                    
+                          </div>
+                        </div> <!-- / .row -->
+
+                      </a>
+                      <a class="list-group-item px-0" href="#!">
+
+                        <div class="row">
+                          <div class="col-auto">
+                    
+                            <!-- Avatar -->
+                            <div class="avatar avatar-sm">
+                              <img src="./assets/img/avatars/profiles/avatar-4.jpg" alt="..." class="avatar-img rounded-circle">
+                            </div>
+
+                          </div>
+                          <div class="col ml-n2">
+                    
+                            <!-- Content -->
+                            <div class="small text-muted">
+                              <strong class="text-body">Daniela Dewitt</strong> subscribed to you.
+                            </div>
+
+                          </div>
+                          <div class="col-auto">
+
+                            <small class="text-muted">
+                              2m
+                            </small>
+                    
+                          </div>
+                        </div> <!-- / .row -->
+
+                      </a>
+                      <a class="list-group-item px-0" href="#!">
+
+                        <div class="row">
+                          <div class="col-auto">
+                    
+                            <!-- Avatar -->
+                            <div class="avatar avatar-sm">
+                              <img src="./assets/img/avatars/profiles/avatar-5.jpg" alt="..." class="avatar-img rounded-circle">
+                            </div>
+
+                          </div>
+                          <div class="col ml-n2">
+                    
+                            <!-- Content -->
+                            <div class="small text-muted">
+                              <strong class="text-body">Miyah Myles</strong> shared your post with <strong class="text-body">Ryu Duke</strong>, <strong class="text-body">Glen Rouse</strong>, and <strong class="text-body">3 others</strong>.
+                            </div>
+
+                          </div>
+                          <div class="col-auto">
+
+                            <small class="text-muted">
+                              2m
+                            </small>
+                    
+                          </div>
+                        </div> <!-- / .row -->
+
+                      </a>
+                      <a class="list-group-item px-0" href="#!">
+
+                        <div class="row">
+                          <div class="col-auto">
+                    
+                            <!-- Avatar -->
+                            <div class="avatar avatar-sm">
+                              <img src="./assets/img/avatars/profiles/avatar-6.jpg" alt="..." class="avatar-img rounded-circle">
+                            </div>
+
+                          </div>
+                          <div class="col ml-n2">
+                    
+                            <!-- Content -->
+                            <div class="small text-muted">
+                              <strong class="text-body">Ryu Duke</strong> reacted to your post with a 😍
+                            </div>
+
+                          </div>
+                          <div class="col-auto">
+
+                            <small class="text-muted">
+                              2m
+                            </small>
+                    
+                          </div>
+                        </div> <!-- / .row -->
+
+                      </a>
+                      <a class="list-group-item px-0" href="#!">
+
+                        <div class="row">
+                          <div class="col-auto">
+                    
+                            <!-- Avatar -->
+                            <div class="avatar avatar-sm">
+                              <img src="./assets/img/avatars/profiles/avatar-7.jpg" alt="..." class="avatar-img rounded-circle">
+                            </div>
+
+                          </div>
+                          <div class="col ml-n2">
+                    
+                            <!-- Content -->
+                            <div class="small text-muted">
+                              <strong class="text-body">Glen Rouse</strong> commented <blockquote class="text-body">“I don’t think this really makes sense to do without approval from Johnathan since he’s the one...” </blockquote>
+                            </div>
+
+                          </div>
+                          <div class="col-auto">
+
+                            <small class="text-muted">
+                              2m
+                            </small>
+                    
+                          </div>
+                        </div> <!-- / .row -->
+
+                      </a>
+                      <a class="list-group-item px-0" href="#!">
+
+                        <div class="row">
+                          <div class="col-auto">
+                    
+                            <!-- Avatar -->
+                            <div class="avatar avatar-sm">
+                              <img src="./assets/img/avatars/profiles/avatar-8.jpg" alt="..." class="avatar-img rounded-circle">
+                            </div>
+
+                          </div>
+                          <div class="col ml-n2">
+                    
+                            <!-- Content -->
+                            <div class="small text-muted">
+                              <strong class="text-body">Grace Gross</strong> subscribed to you.
+                            </div>
+
+                          </div>
+                          <div class="col-auto">
+
+                            <small class="text-muted">
+                              2m
+                            </small>
+                    
+                          </div>
+                        </div> <!-- / .row -->
+
+                      </a>
+                    </div>
+            
+                  </div>
+                </div> <!-- / .dropdown-menu -->
+
+              </div>
+
+              <!-- Dropdown -->
+              <div class="dropdown">
+        
+                <!-- Toggle -->
+                <a href="#" class="avatar avatar-sm avatar-online dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <img src="./assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
+                </a>
+
+                <!-- Menu -->
+                <div class="dropdown-menu dropdown-menu-right">
+                  <a href="profile-posts.html" class="dropdown-item">Profile</a>
+                  <a href="settings.html" class="dropdown-item">Settings</a>
+                  <hr class="dropdown-divider">
+                  <a href="sign-in.html" class="dropdown-item">Logout</a>
+                </div>
+
+              </div>
+
+            </div>
+  
+          </div>
+        </nav>
+      
+
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-12 col-lg-10 col-xl-8">
+            
+            <!-- Header -->
+            <div class="header mt-md-5">
+              <div class="header-body">
+                <div class="row align-items-center">
+                  <div class="col">
+                    
+
+                    <!-- Title -->
+                    <h1 class="header-title">
+                            <i class="fe fe-edit-3"></i>
+                      Event Details
+                    </h1>
+
+                  </div>
+                </div> <!-- / .row -->
+              </div>
+            </div>
+
+            <!-- Form -->
+            <form class="mb-4">
+
+              <!-- Project name -->
+              <div class="form-group">
+                <label>
+                  Event name
+                </label>
+                <input type="text" class="form-control">
+              </div>
+
+              <div class="form-group">
+                <label>
+                    Event Type
+                </label>
+                <select class="form-control" data-toggle="select" data-options='{"placeholder": "Organizer"}'>
+                        <option>Games</option>
+                        <option>Webinar</option>
+                </select>                    
+              </div>                  
+
+              <div class="form-group">
+                <label>
+                    Organizer
+                </label>
+                <select class="form-control" data-toggle="select" data-options='{"placeholder": "Organizer"}'>
+                        <option>Toastmasters</option>
+                        <option>Google</option>
+                </select>                    
+              </div>
+
+              <div class="form-group">
+                <label>
+                  Event Link (For Online Events)
+                </label>
+                <input type="text" class="form-control">
+              </div>                  
+
+              <!-- Project tags -->
+              <div class="form-group">
+                <label>
+                  Project tags
+                </label>
+                <select class="form-control" data-toggle="select" multiple>
+                  <option>CSS</option>
+                  <option>HTML</option>
+                  <option>JavaScript</option>
+                  <option>Bootstrap</option>
+                </select>
+              </div>                  
+
+
+            <!-- Header -->
+            <div class="header mt-md-5">
+              <div class="header-body">
+                <div class="row align-items-center">
+                  <div class="col">
+                    
+                    <!-- Pretitle -->
+                    <h6 class="header-pretitle">
+                    Add more details to your event (example: sponsors )
+                    </h6>
+
+                    <!-- Title -->
+                    <h1 class="header-title">
+                        <i class="fe fe-edit-2"></i>
+                      Event Description
+                    </h1>
+
+                  </div>
+                </div> <!-- / .row -->
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label class="mb-1">
+                Event description
+              </label>
+              <small class="form-text text-muted">
+                Add a short summary to your event
+              </small>
+              <textarea class="form-control" data-toggle="autosize" rows="1" placeholder="Summary"></textarea>
+            </div>  
+
+              <!-- Project description -->
+              <div class="form-group">
+                <label class="mb-1">
+                  Event Summary
+                </label>
+                <small class="form-text text-muted">
+                  This is how others will learn about the event, so make it good!
+                </small>
+                <div data-toggle="quill"></div>
+              </div>
+
+
+
+              <!-- Divider -->
+              <hr class="mt-4 mb-5">
+
+              <!-- Project cover -->
+              <div class="form-group">
+                <label class="mb-1">
+                  Event Main Image
+                </label>
+                <small class="form-text text-muted">
+                  Add an image for your event. Use an image no larger than 1200px * 600px. 
+                </small>
+                <div class="dropzone dropzone-single mb-3" data-toggle="dropzone" data-options='{"url": "https://", "maxFiles": 1, "acceptedFiles": "image/*"}'>
+
+                  <div class="fallback">
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="projectCoverUploads">
+                      <label class="custom-file-label" for="projectCoverUploads">Choose file</label>
+                    </div>
+                  </div>
+
+                  <div class="dz-preview dz-preview-single">
+                    <div class="dz-preview-cover">
+                      <img class="dz-preview-img" src="..." alt="..." data-dz-thumbnail>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+
+              <!-- Divider -->
+              <hr class="mt-5 mb-5">
+
+            <!-- Header -->
+            <div class="header mt-md-5">
+              <div class="header-body">
+                <div class="row align-items-center">
+                  <div class="col">
+                    
+                    <!-- Pretitle -->
+                    <h6 class="header-pretitle">
+                    Help attendees discover where to show up for your event
+                    </h6>
+
+                    <!-- Title -->
+                    <h1 class="header-title">
+                        <i class="fe fe-map-pin"></i>
+                      Event Location
+                    </h1>
+
+                  </div>
+                </div> <!-- / .row -->
+              </div>
+            </div>    
+            
+                  <!-- Location -->
+                  <div class="form-group">
+                    <label>
+                      Location
+                    </label>
+                    <input type="text" class="form-control" disabled>
+                  </div>  
+
+            <div class="alert alert-light" role="alert">
+               You can't change the location for this event because this event has tickets
+              </div>              
+
+            <!-- Header -->
+            <div class="header mt-md-5">
+              <div class="header-body">
+                <div class="row align-items-center">
+                  <div class="col">
+                    
+                    <!-- Pretitle -->
+                    <h6 class="header-pretitle">
+                    Help attendees discover where to show up for your event
+                    </h6>
+
+                    <!-- Title -->
+                    <h1 class="header-title">
+                        <i class="fe fe-clock"></i>
+                        Date and Time
+                    </h1>
+                   
+
+                  </div>
+                </div> <!-- / .row -->
+              </div>
+            </div> 
+
+
+
+              <div class="row">
+                <div class="col-12 col-md-6">
+                  
+                  <!-- Start date -->
+                  <div class="form-group">
+                    <label>
+                      Start date
+                    </label>
+                    <input type="text" class="form-control" data-toggle="flatpickr">
+                  </div>
+
+                </div>
+                <div class="col-12 col-md-6">
+                  
+                  <!-- Start date -->
+                  <div class="form-group">
+                    <label>
+                      End date
+                    </label>
+                    <input type="text" class="form-control" data-toggle="flatpickr">
+                  </div>
+
+            
+
+                </div>
+              </div> <!-- / .row -->                
+
+              <div class="row">
+                <div class="col-12 col-md-6">
+                  
+                  <!-- Start date -->
+                  <div class="form-group">
+                    <label>
+                      Start Time
+                    </label>
+                    <input type="text" class="form-control" data-mask="00:00">
+                  </div>
+
+                </div>
+                <div class="col-12 col-md-6">
+                  
+                  <!-- Start date -->
+                  <div class="form-group">
+                    <label>
+                      End Time
+                    </label>
+                    <input type="text" class="form-control" data-mask="00:00">
+                  </div>
+
+                  
+
+                </div>
+
+                <div class="col-md-12 card bg-light border">
+                        <div class="card-body">
+                          
+                          <h4 class="mb-2">
+                            <i class="fe fe-alert-triangle"></i> Warning
+                          </h4>
+    
+                          <p class="small text-muted mb-0">
+                           You can't change this setting because this event has already been published
+                          </p>
+    
+                        </div>
+                 </div>                    
+
+              </div> <!-- / .row --> 
+
+
+              <!-- Divider -->
+              <hr class="mt-5 mb-5">
+
+              <!-- Buttons -->
+              <a href="#" class="btn btn-block btn-primary">
+                Save Changes
+              </a>
+              <a href="#" class="btn btn-block btn-link text-muted">
+                Discard Changes
+              </a>
+
+            </form>
+
+          </div>
+        </div> <!-- / .row -->
+      </div>
+      
+    </div> <!-- / .main-content -->
+{% endblock content %}

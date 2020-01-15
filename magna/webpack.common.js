@@ -6,8 +6,7 @@ const BundleTracker = require('webpack-bundle-tracker');
 module.exports = {
   context: __dirname,
   entry: {
-    dashboard: './static_src/dashboard-main.js',
-    dashboard: './static_src/dashboard-css.js',
+    main: './static_src/dashboard/assets/js/theme.min.js',
   },
   output: {
       path: path.resolve(__dirname, 'static_build'),

@@ -4,20 +4,20 @@ Logged in as <strong>{{ user }}</strong><br>
 <a href="{% url 'account_logout' %}">Logout</a><br>
 
 
-
 <h1>
     All Events
+    <a href="{% url 'create-event' %}"></a>
 </h1>
-
 <h2>{{note}}</h2>
 <div style="padding:20px;">
     {% for event in events %}
-    <!-- <a href=" event.get_absolute_url "> -->
-        <h3>{{ event.name }}</h3>
-        <img src="{{ event.image.url }}" />
-    </a>
-    {% endfor %}
+    
+    <h3>{{ event.name }}</h3>
+    <img src="{{ event.image.url }}" />
+</a>
+{% endfor %}
 </div>
 {% else %}
 <a href="{% url 'account_login' %}">Login</a>
 {% endif %}
+<a href="{% url 'create-event' %}">Create Event</a><br>

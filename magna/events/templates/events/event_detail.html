@@ -1,10 +1,13 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+
 <h1>
     Event Detail
 </h1>
 <p>Category : {{ event.category  }}</p>
 <p>Name: {{ event.name }}</p>
 <p>By: {{ event.organizer }}</p>
-<p>Description: {{ event.description }}</p>
+<p>Description: {{ event.get_description_as_markdown }}</p>
 <p>Venue: {{ event.venue }}</p>
 
 
@@ -14,4 +17,4 @@
 <p>Facebook : {{ event.organizer.facebook }}</p>
 <p>Twitter : {{ event.organizer.twitter }}</p>
 <p>Instagram : {{ event.organizer.instagram }}</p>
-<p>LinkedIn : {{ event.organizer.linkedin }}</p>
+<p>LinkedIn : {{ event.organizer.linkedin }}</p>    

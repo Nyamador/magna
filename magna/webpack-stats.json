@@ -1,1 +1,1 @@
-{"status":"error","error":"ModuleNotFoundError","message":"Module not found: Error: Can't resolve 'jquery' in 'C:\\Users\\user\\Documents\\src\\magna\\static_src\\js'"}
+{"status":"done","chunks":{"main":[{"name":"main-f43235cbc5c4e7c3408e.js","path":"C:\\Users\\user\\Documents\\src\\magna\\static_build\\main-f43235cbc5c4e7c3408e.js"},{"name":"main-f43235cbc5c4e7c3408e.js.map","path":"C:\\Users\\user\\Documents\\src\\magna\\static_build\\main-f43235cbc5c4e7c3408e.js.map"}]}}

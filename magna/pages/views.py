@@ -10,5 +10,4 @@ def index(request):
     context = {
         'events': all_events,
     }
-    print(request)
     return render(request, "pages/index.html", context)
