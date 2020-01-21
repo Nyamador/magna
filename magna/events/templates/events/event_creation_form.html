@@ -1,0 +1,105 @@
+{% extends "events/dashboard/_base.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div class="main-content">
+    <div class="container">
+        <div class="row justify-content-center">
+
+            <div class="col-12 col-lg-10 col-xl-8">
+                <div class="header">
+                    <div class="header-body">
+                  
+                      <h6 class="header-pretitle">
+                        LET'S GET STARTED!
+                      </h6>
+                      
+                      <h1 class="header-title">
+                        CREATE A NEW EVENT
+                      </h1>
+                  
+                    </div>
+                  </div>
+        
+                <form action="{% url 'create-event' %}" method="POST">
+            {% csrf_token %}
+            
+            {% if form.errors %}
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <div class="invalid-feedback">
+                            {{ error  }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            {% endif %}
+        
+            {% with WIDGET_ERROR_CLASS='is-invalid' %}
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+                            {% render_field form.name|add_class:'form-control'|add_error_class:"is-invalid"|attr:'maxlength:255' %}  
+                        </div>   
+                    </div>     
+
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label for="{{ form.category.id_for_label }}">{{ form.category.label }}</label>
+                            {% render_field form.category|add_class:'form-control'|add_error_class:"is-invalid" %}
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="form-group">
+                    <label for="{{ form.organizer.id_for_label }}">{{ form.organizer.label }}</label>
+                    {% render_field form.organizer|add_class:'form-control'|add_error_class:"is-invalid" %}  
+                </div>
+        
+                <div class="form-group">
+                    <label for="{{ form.venue.id_for_label }}">{{ form.venue.label }}</label>
+                    {% render_field form.venue|add_class:'form-control'|add_error_class:"is-invalid"|attr:'maxlength:255' %}  
+                </div>       
+                
+                <div class="form-group">
+                    <label for="{{ form.start_date.id_for_label }}">{{ form.start_date.label }}</label>
+                    {% render_field form.start_date|add_class:'form-control'|add_error_class:"is-invalid"|attr:'data-toggle:flatpickr' %}  
+                </div>    
+                
+                <div class="form-group">
+                    <label for="{{ form.start_time.id_for_label }}">{{ form.start_time.label }}</label>
+                    {% render_field form.start_time|add_class:'form-control'|add_error_class:"is-invalid"|attr:'data-mask:00:00' %}  
+                </div>           
+                
+                <div class="form-group">
+                    <label for="{{ form.end_date.id_for_label }}">{{ form.end_date.label }}</label>
+                    {% render_field form.end_date|add_class:'form-control'|add_error_class:"is-invalid" %}  
+                </div>      
+                
+                <div class="form-group">
+                    <label for="{{ form.end_time.id_for_label }}">{{ form.end_time.label }}</label>
+                    {% render_field form.end_time|add_class:'form-control'|add_error_class:"is-invalid"|attr:'data-mask:00:00' %}  
+                </div>   
+                
+                <div class="form-group">
+                    <label for="{{ form.time_zone.id_for_label }}">{{ form.time_zone.label }}</label>
+                    {% render_field form.time_zone|add_class:'form-control'|add_error_class:"is-invalid" %}  
+                </div>
+                
+                <div class="form-group">
+                    <div class="custom-control custom-switch">
+                        {% render_field form.active|add_class:'custom-control-input'|attr:'id:customSwitch1' %}
+                        <label for="{{ form.active.id_for_label }}" class="custom-control-label">{{ form.active.label }}</label>
+                    </div>                      
+                </div>        
+            {% endwith %}
+        
+            <input type="submit" class="primaryAction btn btn-lg btn-block btn-primary mb-3" value="submit">
+        </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

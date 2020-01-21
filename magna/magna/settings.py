@@ -46,9 +46,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'magna',
-    # 'allauth.socialaccount',
+    'allauth.socialaccount',
     'widget_tweaks',
-    'webpack_loader',
 ]
 
 MIDDLEWARE = [
@@ -66,9 +65,7 @@ ROOT_URLCONF = 'magna.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            os.path.join(BASE_DIR, 'templates'),
-        ],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -189,14 +186,6 @@ WEBPACK_LOADER = {
         'TIMEOUT': None,
         'IGNORE': [r'.+\.hot-update.js', r'.+\.map']
     },
-    # 'DASHBOARD': {
-    #     'CACHE': not DEBUG,
-    #     'BUNDLE_DIR_NAME': 'dashboard_bundles/',
-    #     'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats-dashboard.json'),
-    #     'POLL_INTERVAL': 0.1,
-    #     'TIMEOUT': None,
-    #     'IGNORE': [r'.+\.hot-update.js', r'.+\.map']
-    # }
 }
 #{% load render_bundle from webpack_loader %}
 #{% render_bundle 'main' %}
