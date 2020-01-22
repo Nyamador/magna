@@ -3,7 +3,7 @@ from events.models import Event
 
 # # Create your views here.
 def index(request):
-    # request.hj
+    
     all_events = Event.objects.all()
     
 

@@ -71,7 +71,7 @@ class Event(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('evt', args=[str(self.slug)])
+        return reverse('event-dashboard', args=[self.slug])
 
     def get_description_as_markdown(self):  # test fot null
         """

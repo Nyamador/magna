@@ -51,40 +51,84 @@
                         </div>
                     </div>
                 </div>
-        
-                <div class="form-group">
-                    <label for="{{ form.organizer.id_for_label }}">{{ form.organizer.label }}</label>
-                    {% render_field form.organizer|add_class:'form-control'|add_error_class:"is-invalid" %}  
+
+                <div class="row">
+                
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label for="{{ form.organizer.id_for_label }}">{{ form.organizer.label }}</label>
+                            {% render_field form.organizer|add_class:'form-control'|add_error_class:"is-invalid" %}
+                              <div  class="invalid-feedback">
+                                  {{ form.organizer.errors }}
+                              </div>
+                        </div>
+                    </div>
+            
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label for="{{ form.venue.id_for_label }}">{{ form.venue.label }}</label>
+                            {% render_field form.venue|add_class:'form-control'|add_error_class:"is-invalid"|attr:'maxlength:255' %}
+                              <div class="invalid-feedback">
+                                  {{ form.venue.errors }}
+                              </div>
+                        </div>    
+                    </div>
                 </div>
-        
-                <div class="form-group">
-                    <label for="{{ form.venue.id_for_label }}">{{ form.venue.label }}</label>
-                    {% render_field form.venue|add_class:'form-control'|add_error_class:"is-invalid"|attr:'maxlength:255' %}  
-                </div>       
+
                 
-                <div class="form-group">
-                    <label for="{{ form.start_date.id_for_label }}">{{ form.start_date.label }}</label>
-                    {% render_field form.start_date|add_class:'form-control'|add_error_class:"is-invalid"|attr:'data-toggle:flatpickr' %}  
-                </div>    
+                <hr class="mt-4 mb-5">
+
+
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label for="{{ form.start_date.id_for_label }}">{{ form.start_date.label }}</label>
+                            {% render_field form.start_date|add_class:'form-control flatpickr-input'|add_error_class:"is-invalid"|attr:'data-toggle:flatpickr' %}
+                      <div class="invalid-feedback">
+                          {{ form.start_date.errors }}
+                      </div>                              
+                        </div>   
+                    </div> 
+                   
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label for="{{ form.start_time.id_for_label }}">{{ form.start_time.label }}</label>
+                            {% render_field form.start_time|add_class:'form-control'|add_error_class:"is-invalid"|attr:'data-mask:00:00' %}
+                      <div class="invalid-feedback">
+                          {{ form.start_time.errors }}
+                      </div>                              
+                        </div>
+                    </div>
+                </div>        
                 
-                <div class="form-group">
-                    <label for="{{ form.start_time.id_for_label }}">{{ form.start_time.label }}</label>
-                    {% render_field form.start_time|add_class:'form-control'|add_error_class:"is-invalid"|attr:'data-mask:00:00' %}  
-                </div>           
-                
-                <div class="form-group">
-                    <label for="{{ form.end_date.id_for_label }}">{{ form.end_date.label }}</label>
-                    {% render_field form.end_date|add_class:'form-control'|add_error_class:"is-invalid" %}  
-                </div>      
-                
-                <div class="form-group">
-                    <label for="{{ form.end_time.id_for_label }}">{{ form.end_time.label }}</label>
-                    {% render_field form.end_time|add_class:'form-control'|add_error_class:"is-invalid"|attr:'data-mask:00:00' %}  
-                </div>   
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label for="{{ form.end_date.id_for_label }}">{{ form.end_date.label }}</label>
+                            {% render_field form.end_date|add_class:'form-control flatpickr-input'|add_error_class:"is-invalid"|attr:'data-toggle:flatpickr' %}
+                      <div class="invalid-feedback">
+                          {{ form.end_date.errors }}
+                      </div>                              
+                        </div> 
+                    </div>     
+                        
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label for="{{ form.end_time.id_for_label }}">{{ form.end_time.label }}</label>
+                            {% render_field form.end_time|add_class:'form-control'|add_error_class:"is-invalid"|attr:'data-mask:00:00' %}
+                      <div class="invalid-feedback">
+                          {{ form.end_time.errors }}
+                      </div>                              
+                        </div>  
+                    </div>
+                </div> 
                 
                 <div class="form-group">
                     <label for="{{ form.time_zone.id_for_label }}">{{ form.time_zone.label }}</label>
-                    {% render_field form.time_zone|add_class:'form-control'|add_error_class:"is-invalid" %}  
+                    {% render_field form.time_zone|add_class:'form-control'|add_error_class:"is-invalid" %}
+                      <div class="invalid-feedback">
+                          {{ form.time_zone.errors }}
+                      </div>                      
                 </div>
                 
                 <div class="form-group">
@@ -94,8 +138,22 @@
                     </div>                      
                 </div>        
             {% endwith %}
+
+            <div class="card bg-light border ml-md-4">
+                <div class="card-body">
+                  
+                  <p class="mb-2">
+                    Event Publishing
+                  </p>
+
+                  <p class="small text-muted mb-2">
+                    Your event won't be published automatically, you can add /edit after this step.
+                  </p>
+
+                </div>
+              </div>
         
-            <input type="submit" class="primaryAction btn btn-lg btn-block btn-primary mb-3" value="submit">
+            <input type="submit" class="primaryAction btn btn-lg btn-block btn-primary mb-3" value="Create Event">
         </form>
             </div>
         </div>
@@ -103,3 +161,11 @@
 </div>
 
 {% endblock content %}
+
+{% block extrajs %}
+<script>
+    $(document).ready(function(){
+      $(".flatpickr-input").flatpickr();
+    });
+</script>
+{% endblock extrajs %}

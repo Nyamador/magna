@@ -1,0 +1,115 @@
+{% extends 'events/dashboard/_base.html' %}
+
+{% block content %}
+
+    <!-- MAIN CONTENT
+    ================================================== -->
+    <div class="main-content">
+      
+
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12">
+            
+            <!-- Header -->
+            <div class="header mt-md-5">
+              <div class="header-body">
+                <div class="row align-items-center">
+                  <div class="col">
+                    
+
+                    <!-- Title -->
+                    <h1 class="header-title">
+                      Tickets
+                    </h1>
+
+                  </div>
+                  <div class="col-auto">
+                    
+                    <!-- Button -->
+                    <a href="#" class="btn btn-primary lift">
+                      Create Ticket
+                    </a>
+                    
+                  </div>
+                </div> <!-- / .row -->
+
+              </div>
+            </div>
+
+              {% for ticket in tickets %}
+              <div class="card">
+                    <div class="card-body">
+                      <div class="row align-items-center">
+                        <div class="col ml-n2">
+                          
+                          <h4 class="card-title mb-1">
+                            <a href="profile-posts.html">{{ ticket.name }}</a>
+                          </h4>
+                  
+                          <p class="card-text small text-muted mb-1">
+                            20th December 2019
+                          </p>
+                  
+                          <p class="card-text small">
+                            <span class="text-muted">●</span> Ended
+                          </p>
+                  
+                        </div>
+
+
+                        <div class="col-auto align-items-center">
+                            <p class="text-muted mb-0">200 /400</p>
+                        </div>                        
+
+                        <div class="col-auto">
+                          
+                          <div class="dropdown">
+                            <a href="#!" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" data-expanded="false">
+                              <i class="fe fe-more-vertical"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                              <a href="#!" class="dropdown-item">
+                                Edit
+                              </a>
+                              <a href="#!" class="dropdown-item">
+                                Delete
+                              </a>
+                            </div>
+                          </div>
+                  
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              {% endfor %}
+
+                  <div class="card card-sm mb-0">
+                        <div class="card-body">
+                          <div class="row align-items-center">
+                            <div class="col-12 col-md">
+                              
+                              <!-- Title -->
+                              <a class="mb-md-0" href="#">
+                                Event Capacity
+                              </a>
+    
+                            </div>
+                            <div class="col-6 col-md-auto">
+                              
+                              <!-- Date -->
+                              <span class="small text-muted">
+                                2000
+                              </span>
+    
+                            </div>
+                          </div> <!-- / .row -->
+                        </div>
+                      </div>
+
+          </div>
+        </div> <!-- / .row -->
+      </div>
+      
+    </div> <!-- / .main-content -->
+{% endblock content %}

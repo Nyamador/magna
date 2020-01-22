@@ -8,7 +8,6 @@ from .managers import MagnaUserManager
 class MagnaUser(AbstractUser):
     
     email = models.EmailField(verbose_name="Email Adddress", max_length=255, unique=True)
-    mobile = models.CharField(verbose_name="Mobile Number", max_length=20)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

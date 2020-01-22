@@ -154,19 +154,19 @@ SITE_ID = 1
 
 AUTH_USER_MODEL = 'users.MagnaUser'
 
-ACCOUNT_EMAIL_REQUIRED = True
-
 ACCOUNT_USERNAME_REQUIRED = False
 
-ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
 
-ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_EMAIL_REQUIRED = True
 
-ACCOUNT_UNIQUE_EMAIL  = True
+ACCOUNT_UNIQUE_EMAIL = True
 
-ACCOUNT_FORMS ={
-    'signup': 'users.forms.MagnaSignUpForm',
-}
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+
+# ACCOUNT_FORMS ={
+#     'signup': 'users.forms.MagnaSignUpForm',
+# }
 
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

@@ -8,15 +8,13 @@ class MagnaUserCreationForm(UserCreationForm):
 
     class Meta:
         model = MagnaUser
-        fields = ('email','mobile',)
+        fields = ('email',)
 
 
 class MagnaSignUpForm(SignupForm):
     """
     Overriding AllAuth's SignupForm to add an option for telephone number
     """
-
-    mobile = forms.CharField(max_length=20)
 
     def save(self, request):
         user = super(MagnaSignUpForm, self).save(request)
