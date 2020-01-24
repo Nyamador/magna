@@ -10,7 +10,7 @@ class EventCreationForm(ModelForm):
 class TicketCreationForm(ModelForm):
     class Meta:
         model = Ticket
-        fields = '__all__'
+        exclude = ['event']
 
 class GuestListCreationForm(ModelForm):
     class Meta:

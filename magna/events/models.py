@@ -53,7 +53,6 @@ class Event(models.Model):
     event_id = models.UUIDField(verbose_name="Event Id", unique=True, editable=False, default=uuid.uuid4())
     slug = models.SlugField(verbose_name="Slug", max_length=100, unique=True, blank=True, null=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    # event_type = models.CharField(verbose_name="Event Type", max_length=5, choices=)
     category = models.CharField(verbose_name="Event Category", choices=category_list, max_length=10)
     name = models.CharField(verbose_name="Event Name", max_length=255)
     organizer = models.ForeignKey(Organizer, on_delete=models.CASCADE)
@@ -118,20 +117,18 @@ class Ticket(models.Model):
         ('door', 'At the door only'),
         ('both', 'Everywhere'),
     )
-    kind = models.CharField(verbose_name="Event Type", choices=ticket_type, max_length=1)
+    kind = models.CharField(verbose_name="Ticket Type", choices=ticket_type, max_length=1)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     name = models.CharField(verbose_name="Ticket Name", max_length=50)
-    quantity = models.CharField(verbose_name="Quantity", max_length=30)
+    quantity = models.PositiveIntegerField(verbose_name="Quantity")
     price = models.DecimalField(verbose_name="Ticket Price", decimal_places=2, max_digits=10)
-    sale_start_date = models.DateField(verbose_name="Event Start Date", auto_now_add=True)
-    sale_start_time = models.CharField(verbose_name="Start Time", max_length=10, null=True, blank=True)
-    sale_end_date = models.DateField(verbose_name="Event End Date", auto_now_add=True)
-    sale_end_time = models.CharField(verbose_name="End Time", max_length=10, null=True, blank=True)
-    description = models.CharField(verbose_name="Event Description", max_length=2500, null=True, blank=True)
-    visibility = models.CharField(verbose_name="Event Type", choices=visibility_list, max_length=1, null=True,
-                                  blank=True)
+    # sale_start_date = models.DateField(verbose_name="Event Start Date", auto_now_add=True)
+    # sale_start_time = models.CharField(verbose_name="Start Time", max_length=10, null=True, blank=True)
+    # sale_end_date = models.DateField(verbose_name="Event End Date", auto_now_add=True)
+    # sale_end_time = models.CharField(verbose_name="End Time", max_length=10, null=True, blank=True)
+    description = models.CharField(verbose_name="Ticket Description", max_length=2500, null=True, blank=True)
     # Ticket per order
-    minimum_ticket_order = models.PositiveSmallIntegerField(verbose_name="Minimum Order", default="1")
+    minimum_ticket_order = models.PositiveIntegerField(verbose_name="Minimum Order", default="1")
     maximum_ticket_order = models.PositiveIntegerField(verbose_name="Maximum Order", null=False, blank=False)
     sales_channel = models.CharField(verbose_name="Ticket Sales Channel", choices=sales_channel, max_length=5,
                                      null=True, blank=True)

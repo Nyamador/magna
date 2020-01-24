@@ -1,6 +1,123 @@
-{%  extends 'events/dashboard/_base.html'   %}
+{% extends "events/dashboard/_base.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
 
 
+<div class="main-content">
+    <div class="container">
+        <div class="row justify-content-center">
 
-{% block body %}
-{% endblock body %}
+            <div class="col-12 col-lg-10 col-xl-8">
+                <div class="header">
+                    <div class="header-body">
+                  
+                      <h6 class="header-pretitle">
+                        
+                      </h6>
+                      
+                      <h1 class="header-title">
+                        CREATE A TICKET
+                      </h1>
+                  
+                    </div>
+                  </div>
+
+                  <form method="post">
+                    {% csrf_token %}
+            
+                    {% if form.errors %}
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <div class="invalid-feedback">
+                                    {{ error  }}
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                    {% endif %}
+                    
+                    
+                    {% with WIDGET_ERROR_CLASS='is-invalid' %}
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="{{ form.kind.id_for_label }}">{{ form.kind.label }}</label>
+                                    {% render_field form.kind|add_class:'form-control'|add_error_class:"is-invalid" %}
+                                    {{ form.organizer.kind }}
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+                                    {% render_field form.name|add_class:'form-control'|add_error_class:"is-invalid" %}
+                                    {{ form.organizer.name }}
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="{{ form.quantity.id_for_label }}">{{ form.quantity.label }}</label>
+                                    {% render_field form.quantity|add_class:'form-control'|add_error_class:"is-invalid" %}
+                                    {{ form.organizer.quantity }}
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="{{ form.price.id_for_label }}">{{ form.price.label }}</label>
+                                    {% render_field form.price|add_class:'form-control'|add_error_class:"is-invalid" %}
+                                    {{ form.organizer.price }}
+                                </div>
+                            </div>
+
+                        </div> 
+                        
+
+
+                            <div class="form-group">
+                                    <label for="{{ form.description.id_for_label }}">{{ form.description.label }}</label>
+                                    {% render_field form.description|add_class:'form-control'|add_error_class:"is-invalid" %}
+                                    {{ form.organizer.description }}
+                            </div>
+
+
+                        <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+                                        <label for="{{ form.minimum_ticket_order.id_for_label }}">{{ form.minimum_ticket_order.label }}</label>
+                                        {% render_field form.minimum_ticket_order|add_class:'form-control'|add_error_class:"is-invalid" %}
+                                        {{ form.organizer.minimum_ticket_order }}
+                                    </div>
+                            </div>
+
+
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+                                        <label for="{{ form.maximum_ticket_order.id_for_label }}">{{ form.maximum_ticket_order.label }}</label>
+                                        {% render_field form.maximum_ticket_order|add_class:'form-control'|add_error_class:"is-invalid" %}
+                                        {{ form.organizer.maximum_ticket_order }}
+                                    </div>
+                                </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="{{ form.sales_channel.id_for_label }}">{{ form.sales_channel.label }}</label>
+                            {% render_field form.sales_channel|add_class:'form-control'|add_error_class:"is-invalid" %}
+                            {{ form.organizer.sales_channel }}
+                    </div>
+
+                    {% endwith %}
+                    <input type="submit" class="primaryAction btn btn-lg btn-block btn-primary mb-3" value="Create Ticket">
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}    
+

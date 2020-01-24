@@ -5,7 +5,7 @@ from django.urls import reverse_lazy, reverse
 from django.views.generic.edit import CreateView
 from django.views.generic import ListView
 from .models import Event, Ticket
-from .forms import EventCreationForm
+from .forms import EventCreationForm, TicketCreationForm
 
 
 class EventCreation(LoginRequiredMixin, CreateView):
@@ -54,13 +54,31 @@ class TicketListView(ListView, LoginRequiredMixin):
     template_name = 'events/dashboard/tickets/all-tickets.html'
 
     def get_queryset(self):
-        qs = Ticket.objects.all()
+        qs = Ticket.objects.all() # Get all Tickets
         if self.kwargs.get('slug'):
+            # Filter initial qs list and get only ticket belonging to the current event
             qs = qs.filter(event__slug=self.kwargs['slug'])
         return qs
 
+    def get_context_data(self, **kwargs):
+         # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        context['slug'] = self.kwargs['slug']
+        return context
 
-@login_required()
-def TicketCreationView(request):
 
-    return render(request, 'events/dashboard/new-ticket.html')
+class TicketCreationView(LoginRequiredMixin, CreateView):
+    """
+    View for creating an event
+    """
+    model = Ticket
+    template_name = 'events/dashboard/tickets/new-ticket.html'
+    form_class = TicketCreationForm
+
+    def form_valid(self, form):
+        event = get_object_or_404(Event, slug=self.kwargs['slug'])
+        form.instance.event = event
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('ticket-list', args=[self.kwargs['slug']])
