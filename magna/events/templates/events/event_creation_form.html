@@ -133,8 +133,8 @@
                 
                 <div class="form-group">
                     <div class="custom-control custom-switch">
-                        {% render_field form.active|add_class:'custom-control-input'|attr:'id:customSwitch1' %}
-                        <label for="{{ form.active.id_for_label }}" class="custom-control-label">{{ form.active.label }}</label>
+                        {% render_field form.active|add_class:'custom-control-input'|attr:'id:switchOne' %}
+                        <label for="switchOne" class="custom-control-label">{{ form.active.label }}</label>
                     </div>                      
                 </div>        
             {% endwith %}

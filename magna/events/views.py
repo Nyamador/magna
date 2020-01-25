@@ -8,6 +8,7 @@ from .models import Event, Ticket
 from .forms import EventCreationForm, TicketCreationForm
 
 
+
 class EventCreation(LoginRequiredMixin, CreateView):
     """
     View for Creation of New Event
@@ -23,6 +24,7 @@ class EventCreation(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
+
 def EventDetailView(request, slug):
     """
     Event Detail View for Attendee
@@ -32,6 +34,7 @@ def EventDetailView(request, slug):
         'event': event
     }
     return render(request, 'events/event_detail.html', context)
+
 
 
 @login_required()
@@ -46,6 +49,8 @@ def ManageView(request, slug):
         'event': event
     }
     return render(request, 'events/dashboard/home.html', context)
+
+
 
 
 class TicketListView(ListView, LoginRequiredMixin):
@@ -67,6 +72,7 @@ class TicketListView(ListView, LoginRequiredMixin):
         return context
 
 
+
 class TicketCreationView(LoginRequiredMixin, CreateView):
     """
     View for creating an event
@@ -82,3 +88,30 @@ class TicketCreationView(LoginRequiredMixin, CreateView):
 
     def get_success_url(self):
         return reverse_lazy('ticket-list', args=[self.kwargs['slug']])
+
+
+
+def EventSettings(request, slug):
+    event = get_object_or_404(Event, slug=slug)
+    context = {
+        'event': event
+    }
+    return render(request, 'events/dashboard/settings.html', context)
+
+
+
+def EventPayout(request, slug):
+    event = get_object_or_404(Event, slug=slug)
+    context = {
+        'event': event
+    }
+    return render(request, 'events/dashboard/payout.html', context)
+
+
+
+def EventOrders(request, slug):
+    event = get_object_or_404(Event, slug=slug)
+    context = {
+        'event': event
+    } 
+    return render(request, 'events/dashboard/orders.html', context)  

@@ -204,3 +204,8 @@ WEBPACK_LOADER = {
 #{% load webpack_static from webpack_loader %}
 #<!-- render full public path of logo.png -->
 #<img src="{% webpack_static 'logo.png' %}"/>
+
+ALGOLIA = {
+    'APPLICATION_ID': 'APPID',
+    'API_KEY': 'ADMINAPIKEY'
+}

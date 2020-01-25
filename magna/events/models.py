@@ -50,7 +50,12 @@ class Event(models.Model):
         ('TO', 'Travel & Outdoor'),
         ('Other', 'Other'),
     )
-    event_id = models.UUIDField(verbose_name="Event Id", unique=True, editable=False, default=uuid.uuid4())
+
+    payout_choices = (
+        ('MTN', 'MTN Mobile Money'),
+        ('Bank', 'Bank Deposit'),
+        ('Voda', 'Vodafone Cash'),
+    )
     slug = models.SlugField(verbose_name="Slug", max_length=100, unique=True, blank=True, null=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     category = models.CharField(verbose_name="Event Category", choices=category_list, max_length=10)
@@ -64,7 +69,8 @@ class Event(models.Model):
     end_time = models.CharField(verbose_name="End Time", max_length=10)
     time_zone = models.CharField(verbose_name="Event Timezone", max_length=255)
     image = models.ImageField(upload_to="event/%Y/%m/%d/", max_length=100, default="profilep.jpg")
-    active = models.BooleanField(verbose_name="Active Event", default=False)
+    payout = models.CharField(verbose_name="Event Payout Method", choices=payout_choices, max_length=10, null=True, blank=True)
+    is_active = models.BooleanField(verbose_name="Active Event", default=False)
 
     def __str__(self):
         return self.name
