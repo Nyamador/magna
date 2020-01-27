@@ -7,6 +7,8 @@ WORKDIR /code
 # set environment variable
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
+ENV DEBUG 0
+ENV SECRET_KEY 'rmg2^%c^3&!#h*3@t*q(ozomi668gjn%hd+yo$1lra1-)m=at='
 
 # install dependencies
 RUN pip install --upgrade pip

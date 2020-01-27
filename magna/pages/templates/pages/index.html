@@ -25,7 +25,7 @@
     <div style="padding:20px;">
         {% for event in events %}
         
-        <h3>{{ event.name }}</h3>
+        <h3><a href="{{ event.get_absolute_url }}">{{ event.name }}</a></h3>
         <img src="{{ event.image.url }}" />
     </a>
     {% endfor %}

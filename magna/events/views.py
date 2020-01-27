@@ -33,6 +33,10 @@ def EventDetailView(request, slug):
     context = {
         'event': event
     }
+
+    # Link Tracking
+    referrer = request.GET['mg_source']
+    channel = request.GET['mg_channel']
     return render(request, 'events/event_detail.html', context)
 
 

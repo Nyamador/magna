@@ -61,7 +61,7 @@ class Event(models.Model):
     category = models.CharField(verbose_name="Event Category", choices=category_list, max_length=10)
     name = models.CharField(verbose_name="Event Name", max_length=255)
     organizer = models.ForeignKey(Organizer, on_delete=models.CASCADE)
-    description = models.CharField(verbose_name="Event Description", max_length=255, blank=True, null=True)
+    description = models.CharField(verbose_name="Event Description", max_length=50000, blank=True, null=True)
     venue = models.CharField(verbose_name="Venue", max_length=255)
     start_date = models.DateField(verbose_name="Event Start Date")
     start_time = models.CharField(verbose_name="Start Time", max_length=10)
@@ -76,7 +76,7 @@ class Event(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('event-dashboard', args=[self.slug])
+        return reverse('event-detail', args=[self.slug])
 
     def get_description_as_markdown(self):  # test fot null
         """
