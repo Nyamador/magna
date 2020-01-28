@@ -72,7 +72,9 @@ class TicketListView(ListView, LoginRequiredMixin):
     def get_context_data(self, **kwargs):
          # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
+        event = get_object_or_404(Event, slug=self.kwargs['slug'])
         context['slug'] = self.kwargs['slug']
+        context['event'] = event
         return context
 
 
@@ -84,6 +86,13 @@ class TicketCreationView(LoginRequiredMixin, CreateView):
     model = Ticket
     template_name = 'events/dashboard/tickets/new-ticket.html'
     form_class = TicketCreationForm
+
+    def get_context_data(self, **kwargs):
+        # Call the base class implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        event = get_object_or_404(Event, slug=self.kwargs['slug'])
+        context['event'] = event
+        return context
 
     def form_valid(self, form):
         event = get_object_or_404(Event, slug=self.kwargs['slug'])

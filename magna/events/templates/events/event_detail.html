@@ -4,6 +4,13 @@
 {% block title %} {{ event.name }}  {% endblock title %}
 
 {% block content%}
+        <!-- Alert -->
+{% if not event.is_active %}
+    <div class="alert alert-danger fade show text-center" role="alert" style="background-color: #e60023;margin-bottom:0;border-radius:0;">
+        <strong>Unpublished event : </strong> Sharing unpublished events is not advisable!
+    </div>
+{% else %}
+{% endif %}
 
 <nav class="navbar navbar-expand-lg navbar-light" id="topnav">
     <div class="container">
@@ -78,7 +85,7 @@
         <div class="dropdown">
     
           <!-- Toggle -->
-          <a href="#" class="avatar avatar-sm avatar-online dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a href="#" class="avatar avatar-sm dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <img src="{% static 'events/dashboard/img/avatars/profiles/avatar-1.jpg' %}" alt="..." class="avatar-img rounded-circle">
           </a>
 
@@ -92,6 +99,9 @@
 
         </div>
 
+
+          
+
       </div>
 
       <!-- Collapse -->
@@ -102,226 +112,6 @@
           <input type="search" class="form-control form-control-rounded" placeholder="Search" aria-label="Search">
         </form>
 
-        <!-- Navigation -->
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle " href="#" id="topnavDashboards" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dashboards
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="topnavDashboards">
-              <li>
-                <a class="dropdown-item " href="index.html">
-                  Default
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item " href="dashboard-alt.html">
-                  Alternative
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle " href="#" id="topnavPages" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Pages
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="topnavPages">
-              <li class="dropright">
-                <a class="dropdown-item dropdown-toggle " href="#" id="topnavProfile" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Profile
-                </a>
-                <div class="dropdown-menu" aria-labelledby="topnavProfile">
-                  <a class="dropdown-item " href="profile-posts.html">
-                    Posts
-                  </a>
-                  <a class="dropdown-item " href="profile-groups.html">
-                    Groups
-                  </a>
-                  <a class="dropdown-item " href="profile-projects.html">
-                    Projects
-                  </a>
-                  <a class="dropdown-item " href="profile-files.html">
-                    Files
-                  </a>
-                  <a class="dropdown-item " href="profile-subscribers.html">
-                    Subscribers
-                  </a>
-                </div>
-              </li>
-              <li class="dropright">
-                <a class="dropdown-item dropdown-toggle " href="#" id="topnavProject" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Project
-                </a>
-                <div class="dropdown-menu" aria-labelledby="topnavProject">
-                  <a class="dropdown-item " href="project-overview.html">
-                    Overview
-                  </a>
-                  <a class="dropdown-item " href="project-files.html">
-                    Files
-                  </a>
-                  <a class="dropdown-item " href="project-reports.html">
-                    Reports
-                  </a>
-                  <a class="dropdown-item " href="project-new.html">
-                    New project
-                  </a>
-                </div>
-              </li>
-              <li class="dropright">
-                <a class="dropdown-item dropdown-toggle " href="#" id="topnavTeam" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Team
-                </a>
-                <div class="dropdown-menu" aria-labelledby="topnavTeam">
-                  <a class="dropdown-item " href="team-overview.html">
-                    Overview
-                  </a>
-                  <a class="dropdown-item " href="team-projects.html">
-                    Projects
-                  </a>
-                  <a class="dropdown-item " href="team-members.html">
-                    Members
-                  </a>
-                  <a class="dropdown-item " href="team-new.html">
-                    New team
-                  </a>
-                </div>
-              </li>
-              <li class="dropright">
-                <a class="dropdown-item dropdown-toggle " href="#" id="topnavFeed" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Feed
-                </a>
-                <div class="dropdown-menu" aria-labelledby="topnavFeed">
-                  <a class="dropdown-item " href="feed.html">
-                    Platform
-                  </a>
-                  <a class="dropdown-item " href="social-feed.html">
-                    Social
-                  </a>
-                </div>
-              </li>
-              <li>
-                <a class="dropdown-item " href="kanban.html">
-                  Kanban
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item " href="orders.html">
-                  Orders
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item " href="settings.html">
-                  Settings
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item " href="invoice.html">
-                  Invoice
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item " href="pricing.html">
-                  Pricing
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="topnavAuth" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Auth
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="topnavAuth">
-              <li class="dropright">
-                <a class="dropdown-item dropdown-toggle" href="#" id="topnavSignIn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Sign in
-                </a>
-                <div class="dropdown-menu" aria-labelledby="topnavSignIn">
-                  <a class="dropdown-item" href="sign-in-cover.html">
-                    Cover
-                  </a>
-                  <a class="dropdown-item" href="sign-in-illustration.html">
-                    Illustration
-                  </a>
-                  <a class="dropdown-item" href="sign-in-basics.html">
-                    Basic
-                  </a>
-                </div>
-              </li>
-              <li class="dropright">
-                <a class="dropdown-item dropdown-toggle" href="#" id="topnavSignUp" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Sign up
-                </a>
-                <div class="dropdown-menu" aria-labelledby="topnavSignUp">
-                  <a class="dropdown-item" href="sign-up-cover.html">
-                    Cover
-                  </a>
-                  <a class="dropdown-item" href="sign-up-illustration.html">
-                    Illustration
-                  </a>
-                  <a class="dropdown-item" href="sign-up.html">
-                    Basic
-                  </a>
-                </div>
-              </li>
-              <li class="dropright">
-                <a class="dropdown-item dropdown-toggle" href="#" id="topnavPassword" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Password reset
-                </a>
-                <div class="dropdown-menu" aria-labelledby="topnavPassword">
-                  <a class="dropdown-item" href="password-reset-cover.html">
-                    Cover
-                  </a>
-                  <a class="dropdown-item" href="password-reset-illustration.html">
-                    Illustration
-                  </a>
-                  <a class="dropdown-item" href="password-reset.html">
-                    Basic
-                  </a>
-                </div>
-              </li>
-              <li class="dropright">
-                <a class="dropdown-item dropdown-toggle" href="#" id="topnavError" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Error
-                </a>
-                <div class="dropdown-menu" aria-labelledby="topnavError">
-                  <a class="dropdown-item" href="error-illustration.html">
-                    Illustration
-                  </a>
-                  <a class="dropdown-item" href="error.html">
-                    Basic
-                  </a>
-                </div>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle " href="#" id="topnavDocumentation" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Docs
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="topnavDocumentation">
-              <li>
-                <a class="dropdown-item " href="getting-started.html">
-                  Getting started
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item active" href="components.html">
-                  Components
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item " href="changelog.html">
-                  Changelog
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#modalDemo" data-toggle="modal">
-              Customize
-            </a>
-          </li>
-        </ul>
 
       </div>
 
@@ -331,13 +121,6 @@
 <div class="main-content">
     <div class="container">
 
-        <!-- Alert -->
-        {% if not event.is_active %}
-        <div class="alert alert-danger fade show mt-3" role="alert">
-            <strong>Unpublished event : </strong> Sharing unpublished events is not advisable!
-          </div>
-        {% else %}
-        {% endif %}
         
         <div class="row justify-content-space-between" style="margin-top: 20px;">
             <div class="col-12 col-lg-7 col-xl-7">
@@ -402,8 +185,30 @@
                           </div>
 
                     <div class="card-body">
+
+                        <div>
+                            <span class="fe fe-calendar">
+                            </span>
+
+                            Date
+                        </div>
+
+                        <div>
+                            <span class="fe fe-watch">
+                            </span>
+
+                            Date
+                        </div>
                     
-                        <h3>ABOUT US</h3>
+
+                        <div>
+                            <span class="fe fe-location-pin">
+                            </span>
+
+                            Date
+                        </div>
+
+                        <!-- <h3>ABOUT US</h3>
                         <p class="card-text">
                             The Ghana Tech Summit is a 12-year initiative. The Summit aims to revitalize Ghana’s entrepreneurial economy and reposition it as a global study of catalyzed innovation within an emerging market country.
                         </p>
@@ -416,7 +221,7 @@
                         <h3>WHO ATTENDS?</h3>
                         <p class="card-text">
                             The Ghana Tech Summit is for local and international industry leaders, entrepreneurs, investors, digital marketers and creatives interested in transforming the world via entrepreneurship.
-                        </p>
+                        </p> -->
 
                          
 
@@ -432,13 +237,24 @@
             <!-- Right side -->
             <div class="modal fade fixed-right" id="modalVerticalRight" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-vertical" role="document">
-                <div class="modal-content">
-                    <div class="container">
+                <form class="modal-content">
+                    <div class="modal-body">
+
+                        <a class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                          </a>
+
                         <div class="spinner-border text-primary" role="status">
                             <span class="sr-only">Loading...</span>
-                          </div>  
+                          </div>
                     </div>
-                </div>
+                    
+                    <div class="modal-footer border-0">
+                        <button type="submit" class="btn btn-block btn-primary mt-auto">
+                            Preview
+                          </button>
+                    </div>
+                </form>
                 </div>
             </div>
                         
