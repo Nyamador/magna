@@ -20,7 +20,12 @@
     <link rel="stylesheet" href="{% static 'events/dashboard/css/theme.min.css' %}" id="stylesheetLight">
     <link rel="stylesheet" href="{% static 'events/dashboard/css/theme-dark.min.css' %}" id="stylesheetDark">
 
-    <style>body { display: none; }</style>
+    <style>body { display: none; }
+      .required:after{
+        content: "*" !important;
+        color: red !important;
+      }
+    </style>
     
 
     <title>Magtickets | {{ event.name }}</title>
@@ -823,7 +828,9 @@
 
             <!-- Brand -->
             <a class="navbar-brand" href="#">
+              {% block comment %}
               <!-- <p class="text-muted" style="text-overflow: ellipsis;overflow: hidden;">{{ event.name }} </p> -->
+              {% endblock comment %}
               <img src="{% static 'events/dashboard/img/mglogo.png' %}" alt="" class="navbar-brand-img">
             </a>
 
@@ -991,7 +998,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="{% url 'event-settings' event.name %}">
+                <a class="nav-link " href="{% url 'event-settings' event.slug %}">
                   <i class="fe fe-settings"></i> Event Settings
                 </a>
               </li>                             

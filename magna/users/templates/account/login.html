@@ -7,7 +7,7 @@
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
 
-    {% if messages %}
+{% if messages %}
         {% for message in messages %}
           <div class="alert alert-light alert-dismissible fade show" role="alert">
               {{message}}

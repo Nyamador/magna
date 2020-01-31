@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'magna',
     'allauth.socialaccount',
     'widget_tweaks',
+    'django_summernote',
 ]
 
 MIDDLEWARE = [

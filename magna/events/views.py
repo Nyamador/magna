@@ -1,10 +1,10 @@
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic.edit import CreateView
 from django.views.generic import ListView
-from .models import Event, Ticket
+from .models import Event, Ticket, Organizer
 from .forms import EventCreationForm, TicketCreationForm
 
 
@@ -23,6 +23,11 @@ class EventCreation(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
+    # def get_form(self):
+    #     organizer = Organizer.objects.filter(user=self.request.user)
+    #     form = EventCreationForm(initial={'organizer': organizer})
+    #     print(form, organizer)
+    #     return form
 
 
 def EventDetailView(request, slug):
@@ -35,19 +40,28 @@ def EventDetailView(request, slug):
     }
 
     # Link Tracking
-    referrer = request.GET['mg_source']
-    channel = request.GET['mg_channel']
+    # referrer = request.GET['mg_source']
+    # channel = request.GET['mg_channel']
     return render(request, 'events/event_detail.html', context)
 
 
+def user_is_author(user,event):
+    """
+    Checks if request.user is the author/creator of the event
+    """
+    event = get_object_or_404(Event, slug=slug)
+    return user == user
 
-@login_required()
+# @user_passes_test(user_is_author)
 def ManageView(request, slug):
     """
-    Homepage for event dashboard per event
+    Homepage for dashboard per event
     """
-
+    #  todo: Make sure the user visiting the page is the owner of the event
     event = get_object_or_404(Event, slug=slug)
+
+    if request.user != event.user:
+        return redirect(reverse('home'))
 
     context = {
         'event': event

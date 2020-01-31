@@ -7,7 +7,7 @@
         <!-- Alert -->
 {% if not event.is_active %}
     <div class="alert alert-danger fade show text-center" role="alert" style="background-color: #e60023;margin-bottom:0;border-radius:0;">
-        <strong>Unpublished event : </strong> Sharing unpublished events is not advisable!
+        <strong>Unpublished event : </strong> Sharing unpublished events is not advisable! <a href="{% url 'event-dashboard' event.slug %}">Finish Editing</a>
     </div>
 {% else %}
 {% endif %}
@@ -133,7 +133,7 @@
                         <p>Category : {{ event.category  }}</p>
                         
                         <p class="card-text">
-                        {{ event.description }}
+                        {{ event.description | safe }}
                         </p>
 
                         <h3 class="text-underline">Share With Everyone</h3>
@@ -160,13 +160,13 @@
 
                         <p>Venue: {{ event.venue }}</p>
                         
-                        <h1>Organizer Detail</h1>
-                        <p>{{ event.organizer }}</p>
-                        <p>Description : {{ event.organizer.description }}</p>
-                        <p>Facebook : {{ event.organizer.facebook }}</p>
-                        <p>Twitter : {{ event.organizer.twitter }}</p>
-                        <p>Instagram : {{ event.organizer.instagram }}</p>
-                        <p>LinkedIn : {{ event.organizer.linkedin }}</p>
+<!--                        <h1>Organizer Detail</h1>-->
+<!--                        <p>{{ event.organizer }}</p>-->
+<!--                        <p>Description : {{ event.organizer.description }}</p>-->
+<!--                        <p>Facebook : {{ event.organizer.facebook }}</p>-->
+<!--                        <p>Twitter : {{ event.organizer.twitter }}</p>-->
+<!--                        <p>Instagram : {{ event.organizer.instagram }}</p>-->
+<!--                        <p>LinkedIn : {{ event.organizer.linkedin }}</p>-->
                     </div>
                 </div>
             </div>

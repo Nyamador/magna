@@ -1,11 +1,14 @@
-from django import forms
-from django.forms import ModelForm, Form
+from django.forms import ModelForm
+from django_summernote.widgets import SummernoteInplaceWidget, SummernoteWidget
 from .models import Event, Ticket, Guest, GuestList
 
 class EventCreationForm(ModelForm):
     class Meta:
         model = Event
-        exclude = ['image', 'description', 'user', 'slug']
+        exclude = ['image', 'user', 'slug', 'is_active']
+        widgets = {
+            'description': SummernoteWidget(),
+        }
 
 class TicketCreationForm(ModelForm):
     class Meta:

@@ -97,7 +97,7 @@
                     <div class="col-12 col-md-6">
                         <div class="form-group">
                             <label for="{{ form.start_time.id_for_label }}">{{ form.start_time.label }}</label>
-                            {% render_field form.start_time|add_class:'form-control'|add_error_class:"is-invalid"|attr:'data-mask:00:00' %}
+                            {% render_field form.start_time|add_class:'form-control'|add_error_class:"is-invalid" %}
                       <div class="invalid-feedback">
                           {{ form.start_time.errors }}
                       </div>                              
@@ -119,7 +119,7 @@
                     <div class="col-12 col-md-6">
                         <div class="form-group">
                             <label for="{{ form.end_time.id_for_label }}">{{ form.end_time.label }}</label>
-                            {% render_field form.end_time|add_class:'form-control'|add_error_class:"is-invalid"|attr:'data-mask:00:00' %}
+                            {% render_field form.end_time|add_class:'form-control'|add_error_class:"is-invalid" %}
                       <div class="invalid-feedback">
                           {{ form.end_time.errors }}
                       </div>                              
@@ -134,16 +134,21 @@
                           {{ form.time_zone.errors }}
                       </div>                      
                 </div>
-                
-                <div class="form-group">
-                    <div class="custom-control custom-switch">
-                        {% render_field form.active|add_class:'custom-control-input'|attr:'id:switchOne' %}
-                        <label for="switchOne" class="custom-control-label">{{ form.active.label }}</label>
-                    </div>                      
-                </div>        
+
+                    <div class="form-group">
+                        <label>Event Description</label>
+                            {{ form.description }}
+                    </div>
+
+<!--                    <div class="form-group">-->
+<!--                        <div class="custom-control custom-switch">-->
+<!--                          <input type="checkbox" class="custom-control-input" id="customSwitch1">-->
+<!--                          <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>-->
+<!--                        </div>-->
+<!--                    </div>-->
             {% endwith %}
 
-            <div class="card bg-light border ml-md-4">
+            <div class="card bg-light border">
                 <div class="card-body">
                   
                   <p class="mb-2">
