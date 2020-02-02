@@ -10,15 +10,22 @@
 
             <div class="col-12 col-lg-10 col-xl-8">
                 <div class="header">
+
                     <div class="header-body">
-                  
-                      <h6 class="header-pretitle">
-                        
-                      </h6>
                       
-                      <h1 class="header-title">
-                        CREATE A TICKET
-                      </h1>
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h1 class="header-title">
+                                    CREATE A TICKET
+                                  </h1>
+                            </div>
+        
+                            <div class="col">
+                                <div>
+                                    <a href="/" class="text-muted"><span class="fe fe-x-circle mr-4"> Close</span></a>
+                                  </div>
+                            </div>
+                        </div>
                   
                     </div>
                   </div>
@@ -84,26 +91,6 @@
                                     {{ form.organizer.description }}
                             </div>
 
-
-                        <div class="row">
-                                <div class="col-12 col-md-6">
-                                    <div class="form-group">
-                                        <label for="{{ form.minimum_ticket_order.id_for_label }}">{{ form.minimum_ticket_order.label }}</label>
-                                        {% render_field form.minimum_ticket_order|add_class:'form-control'|add_error_class:"is-invalid" %}
-                                        {{ form.organizer.minimum_ticket_order }}
-                                    </div>
-                            </div>
-
-
-                                <div class="col-12 col-md-6">
-                                    <div class="form-group">
-                                        <label for="{{ form.maximum_ticket_order.id_for_label }}">{{ form.maximum_ticket_order.label }}</label>
-                                        {% render_field form.maximum_ticket_order|add_class:'form-control'|add_error_class:"is-invalid" %}
-                                        {{ form.organizer.maximum_ticket_order }}
-                                    </div>
-                                </div>
-
-                        </div>
 
                         <div class="form-group">
                             <label for="{{ form.sales_channel.id_for_label }}">{{ form.sales_channel.label }}</label>

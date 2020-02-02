@@ -35,8 +35,10 @@ def EventDetailView(request, slug):
     Event Detail View for Attendee
     """
     event = get_object_or_404(Event, slug=slug)
+    tickets = event.ticket_set.all()
     context = {
-        'event': event
+        'event': event,
+        'tickets': tickets
     }
 
     # Link Tracking
@@ -79,7 +81,7 @@ class TicketListView(ListView, LoginRequiredMixin):
     def get_queryset(self):
         qs = Ticket.objects.all() # Get all Tickets
         if self.kwargs.get('slug'):
-            # Filter initial qs list and get only ticket belonging to the current event
+            # Filter initial qs list and get only tickets belonging to the current event
             qs = qs.filter(event__slug=self.kwargs['slug'])
         return qs
 

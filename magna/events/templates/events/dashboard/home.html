@@ -871,7 +871,7 @@
               <ul class="navbar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link text-nowrap text-truncate" href="index.html" role="button" 
+                    <a class="nav-link text-nowrap text-truncate" href="{% url 'event-dashboard' event.slug %}" role="button" 
                     aria-controls="sidebarDashboards" style="display: block;">
                         <i class="fe fe-activity"></i>
                          {{ event.name }}
@@ -894,72 +894,16 @@
                 
 
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'event-orders' event.slug %}" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarAuth">
+                  <a class="nav-link" href="{% url 'event-orders' event.slug %}" role="button" aria-controls="sidebarDashboards">
                     <i class="fe fe-list"></i> Manage Orders
                   </a>
-                  <div class="collapse" id="sidebarAuth1">
-                    <ul class="nav nav-sm flex-column">
-                      <li class="nav-item">
-                        <a href="#sidebarSignIn" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarSignIn">
-                          Sign in
-                        </a>
-                        <div class="collapse" id="sidebarSignIn">
-                          <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                              <a href="sign-in-cover.html" class="nav-link">
-                                Cover
-                              </a>
-                            </li>
-                            <li class="nav-item">
-                              <a href="sign-in-illustration.html" class="nav-link">
-                                Illustration
-                              </a>
-                            </li>
-                            <li class="nav-item">
-                              <a href="sign-in.html" class="nav-link">
-                                Basic
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#sidebarAuth" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarAuth">
+                    <a class="nav-link" href="#sidebarAuth"  role="button" aria-controls="sidebarDashboards">
                       <i class="fe fe-user-plus"></i> Invitations
                     </a>
-                    <div class="collapse" id="sidebarAuth">
-                      <ul class="nav nav-sm flex-column">
-                        <li class="nav-item">
-                          <a href="#sidebarSignIn" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarSignIn">
-                            Sign in
-                          </a>
-                          <div class="collapse" id="sidebarSignIn">
-                            <ul class="nav nav-sm flex-column">
-                              <li class="nav-item">
-                                <a href="sign-in-cover.html" class="nav-link">
-                                  Cover
-                                </a>
-                              </li>
-                              <li class="nav-item">
-                                <a href="sign-in-illustration.html" class="nav-link">
-                                  Illustration
-                                </a>
-                              </li>
-                              <li class="nav-item">
-                                <a href="sign-in.html" class="nav-link">
-                                  Basic
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
+                </li>
 
 
                 <li class="nav-item d-md-none">
@@ -967,6 +911,7 @@
                    <span class="fe fe-bell"></span> Notifications
                   </a>
                 </li>
+                
               </ul>
 
               <!-- Divider -->
@@ -994,7 +939,13 @@
                 <a class="nav-link " href="{% url 'event-settings' event.slug %}">
                   <i class="fe fe-settings"></i> Event Settings
                 </a>
-              </li>                             
+              </li> 
+              
+              <li class="nav-item">
+                <a class="nav-link " href="{% url 'event-detail' event.slug %}" target="_blank">
+                  <i class="fe fe-eye"></i> View Event
+                </a>
+              </li> 
                 <!-- <li class="nav-item">
                   <a class="nav-link " href="getting-started.html">
                     <i class="fe fe-clipboard"></i> Changelog
@@ -3228,14 +3179,16 @@
                 <!-- Features -->
                 <div class="mb-3">
                   <ul class="list-group list-group-flush">
-                      <small> Add / Edit your tickets, you would not be able to edit them after your event goes live.</small>
+                    <li class="list-group-item d-flex align-items-center justify-content-between px-0">
+                      <small> Add unlimited Tickets to your event, you would not be able to edit the event location and time after your event goes live.</small>
+                    </li>
                       
                   </ul>
                 </div>
 
                 <!-- Button -->
-                <a href="#!" class="btn btn-block btn-light">
-                  Manage Tickets
+                <a href="{% url 'ticket-creation' event.slug %}" class="btn btn-block btn-light">
+                  Create Tickets
                 </a>
 
               </div>

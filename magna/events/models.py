@@ -166,7 +166,7 @@ class Event(models.Model):
     end_date = models.DateField(verbose_name="Event End Date")
     end_time = models.CharField(verbose_name="End Time", max_length=10, choices=time_list)
     # time_zone = models.CharField(verbose_name="Event Timezone", max_length=255)
-    image = models.ImageField(upload_to="event/%Y/%m/%d/", max_length=100, default="profilep.jpg")
+    image = models.ImageField(upload_to="event/%Y/%m/%d/", max_length=100, default="original.jpg")
     payout = models.CharField(verbose_name="Event Payout Method", choices=payout_choices, max_length=10, null=True, blank=True)
     is_active = models.BooleanField(verbose_name="Active Event", default=False)
     is_hidden = models.BooleanField(verbose_name="Hidden Event", default=False)
@@ -212,24 +212,18 @@ class Ticket(models.Model):
     )
 
     sales_channel = (
-        ('on', 'Online only'),
-        ('door', 'At the door only'),
-        ('both', 'Everywhere'),
+        ('Online only', 'Online only'),
+        ('At the door', 'At the door only'),
+        ('Everywhere', 'Everywhere'),
     )
     kind = models.CharField(verbose_name="Ticket Type", choices=ticket_type, max_length=1)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     name = models.CharField(verbose_name="Ticket Name", max_length=50)
     quantity = models.PositiveIntegerField(verbose_name="Quantity")
     price = models.DecimalField(verbose_name="Ticket Price", decimal_places=2, max_digits=10)
-    # sale_start_date = models.DateField(verbose_name="Event Start Date", auto_now_add=True)
-    # sale_start_time = models.CharField(verbose_name="Start Time", max_length=10, null=True, blank=True)
-    # sale_end_date = models.DateField(verbose_name="Event End Date", auto_now_add=True)
-    # sale_end_time = models.CharField(verbose_name="End Time", max_length=10, null=True, blank=True)
     description = models.CharField(verbose_name="Ticket Description", max_length=2500, null=True, blank=True)
     # Ticket per order
-    minimum_ticket_order = models.PositiveIntegerField(verbose_name="Minimum Order", default="1")
-    maximum_ticket_order = models.PositiveIntegerField(verbose_name="Maximum Order", null=False, blank=False)
-    sales_channel = models.CharField(verbose_name="Ticket Sales Channel", choices=sales_channel, max_length=5,
+    sales_channel = models.CharField(verbose_name="Ticket Sales Channel", choices=sales_channel, max_length=50,
                                      null=True, blank=True)
 
     def __str__(self):
@@ -263,3 +257,23 @@ class GuestTicket(models.Model):
 
     def __str__(self):
         return f'{self.guest} : {self.ticket}'
+
+
+#Create an order for attendee
+# Reduce Ticket Count
+# 
+
+# class Order(models.Model):
+#     event = models.ForeignKey(Event, on_delete=models.CASCADE)
+
+#     def __str__(self):
+#         return f'Order #{self.id} : {self.event}'
+
+
+# class OrderItem(models.Model):
+#     order = models.ForeignKey(Order, on_delete=models.CASCADE)
+#     ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE)
+
+#     def __str__(self):
+#         return f'{self.ticket:}'
+    

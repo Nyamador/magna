@@ -1,0 +1,2 @@
+1. Test for redirection if the visited event dashboard does not belong to the current user.
+2. Test for the rendering of only organizers belonging to the current user when creating an event.

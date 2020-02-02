@@ -7,6 +7,7 @@
     <div class="container">
         <div class="row justify-content-center">
 
+
             
             <div class="col-12 col-lg-10 col-xl-8">
                 <div class="header mt-md-5">
@@ -16,13 +17,19 @@
                           
       
                           <!-- Title -->
+                          
                           <h1 class="header-title">
                                   <i class="fe fe-edit-3"></i>
                             Event Details
                           </h1>
       
                         </div>
+                        <div class="">
+                            <a href="{% url 'home' %}" class="text-muted"><span class="fe fe-x-circle mr-4"> Close</span></a>
+                          </div>
                       </div> <!-- / .row -->
+                      
+
                     </div>
                   </div>
         
@@ -86,6 +93,7 @@
                 <div class="row">
                     <div class="col-12 col-md-6">
                         <div class="form-group">
+                            <!-- TODO: TEST FOR DATES IN THE PAST AND MAKE SURE THE DATE FOR STARTING AN EVENT IS NOT IN THE PAST -->
                             <label for="{{ form.start_date.id_for_label }}">{{ form.start_date.label }}</label>
                             {% render_field form.start_date|add_class:'form-control flatpickr-input'|add_error_class:"is-invalid"|attr:'data-toggle:flatpickr' %}
                       <div class="invalid-feedback">

@@ -10,6 +10,11 @@ class EventCreationForm(ModelForm):
             'description': SummernoteWidget(),
         }
 
+# class OrderForm(ModelForm):
+#     class Meta:
+#         model = Ticket
+#         fields = ['']
+
 class TicketCreationForm(ModelForm):
     class Meta:
         model = Ticket
