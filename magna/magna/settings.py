@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'widget_tweaks',
     'django_summernote',
+    'qr_code',
 ]
 
 MIDDLEWARE = [

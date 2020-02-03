@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Sum
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic.edit import CreateView
@@ -89,8 +90,13 @@ class TicketListView(ListView, LoginRequiredMixin):
          # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         event = get_object_or_404(Event, slug=self.kwargs['slug'])
+        # Get ticket set to calculate event capacity
+        ticket_set = event.ticket_set.all()
+        # Use the Sum() method to calculate event capacity
+        event_capacity = ticket_set.aggregate(Sum('quantity'))
         context['slug'] = self.kwargs['slug']
         context['event'] = event
+        context['event_capacity'] = event_capacity
         return context
 
 
