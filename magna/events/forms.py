@@ -20,6 +20,14 @@ class TicketCreationForm(ModelForm):
         model = Ticket
         exclude = ['event']
 
+class EventUpdateForm(ModelForm):
+    class Meta:
+        model = Event
+        fields = ['name', 'organizer', 'description']
+        widgets = {
+            'description': SummernoteWidget(),
+        }
+
 class GuestListCreationForm(ModelForm):
     class Meta:
         model = GuestList

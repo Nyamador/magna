@@ -1,4 +1,5 @@
 {% load static %}
+{% load qr_code %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,7 +12,7 @@
     <link rel="stylesheet" href="{% static 'events/dashboard/libs/flatpickr/dist/flatpickr.min.css' %}">
     <link rel="stylesheet" href="{% static 'events/dashboard/libs/quill/dist/quill.core.css' %}">
     <link rel="stylesheet" href="{% static 'events/dashboard/libs/select2/dist/css/select2.min.css' %}">
-    <link rel="stylesheet" href="{% static 'events/dashboard/libs/highlightjs/styles/vs2015.css' %}">
+    <link rel="stylesheet" href="{% static 'events/dashboard/libs/magnific/magnific.min.css' %}">
 
     <!-- Map -->
     <!-- <link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' /> -->
@@ -878,7 +879,7 @@
               <ul class="navbar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link text-nowrap text-truncate" href="index.html" role="button" 
+                    <a class="nav-link text-nowrap text-truncate" href="{% url 'event-dashboard' event.slug %}" role="button" 
                     aria-controls="sidebarDashboards" style="display: block;">
                         <i class="fe fe-activity"></i>
                          {{ event.name }}
@@ -886,7 +887,7 @@
                 </li>   
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#" role="button" aria-controls="sidebarDashboards">
+                    <a class="nav-link" href="{% url 'event-information' event.slug %}" role="button" aria-controls="sidebarDashboards">
                       <i class="fe fe-info"></i>
                          Basic Information
                     </a>
@@ -901,72 +902,16 @@
                 
 
                 <li class="nav-item">
-                  <a class="nav-link" href="#sidebarAuth1" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarAuth">
+                  <a class="nav-link" href="{% url 'event-orders' event.slug %}" role="button" aria-controls="sidebarDashboards">
                     <i class="fe fe-list"></i> Manage Orders
                   </a>
-                  <div class="collapse" id="sidebarAuth1">
-                    <ul class="nav nav-sm flex-column">
-                      <li class="nav-item">
-                        <a href="#sidebarSignIn" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarSignIn">
-                          Sign in
-                        </a>
-                        <div class="collapse" id="sidebarSignIn">
-                          <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                              <a href="sign-in-cover.html" class="nav-link">
-                                Cover
-                              </a>
-                            </li>
-                            <li class="nav-item">
-                              <a href="sign-in-illustration.html" class="nav-link">
-                                Illustration
-                              </a>
-                            </li>
-                            <li class="nav-item">
-                              <a href="sign-in.html" class="nav-link">
-                                Basic
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#sidebarAuth" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarAuth">
+                    <a class="nav-link" href="#sidebarAuth"  role="button" aria-controls="sidebarDashboards">
                       <i class="fe fe-user-plus"></i> Invitations
                     </a>
-                    <div class="collapse" id="sidebarAuth">
-                      <ul class="nav nav-sm flex-column">
-                        <li class="nav-item">
-                          <a href="#sidebarSignIn" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarSignIn">
-                            Sign in
-                          </a>
-                          <div class="collapse" id="sidebarSignIn">
-                            <ul class="nav nav-sm flex-column">
-                              <li class="nav-item">
-                                <a href="sign-in-cover.html" class="nav-link">
-                                  Cover
-                                </a>
-                              </li>
-                              <li class="nav-item">
-                                <a href="sign-in-illustration.html" class="nav-link">
-                                  Illustration
-                                </a>
-                              </li>
-                              <li class="nav-item">
-                                <a href="sign-in.html" class="nav-link">
-                                  Basic
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
+                </li>
 
 
                 <li class="nav-item d-md-none">
@@ -974,6 +919,7 @@
                    <span class="fe fe-bell"></span> Notifications
                   </a>
                 </li>
+                
               </ul>
 
               <!-- Divider -->
@@ -986,182 +932,29 @@
 
               
               <!-- Navigation -->
-             <ul class="navbar-nav mb-md-4">
-              <li class="nav-item">
-                <a class="nav-link " href="getting-started.html">
-                  <i class="fe fe-help-circle"></i> Help
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " href="getting-started.html">
-                  <i class="fe fe-git-branch"></i> Changelog
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " href="{% url 'event-settings' event.slug %}">
-                  <i class="fe fe-settings"></i> Event Settings
-                </a>
-              </li>                             
-                <!-- <li class="nav-item">
+              <ul class="navbar-nav mb-md-4">
+                <li class="nav-item">
                   <a class="nav-link " href="getting-started.html">
-                    <i class="fe fe-clipboard"></i> Changelog
+                    <i class="fe fe-help-circle"></i> Help
                   </a>
-                </li> -->
-                <!-- <li class="nav-item">
-                  <a class="nav-link" href="#sidebarComponents" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarComponents">
-                    <i class="fe fe-book-open"></i> Help
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link qr-link" href="{% qr_url_from_text 'gbg-accra-eventqr' size='T' image_format='png' %}">
+                    <i class="fe fe-camera"></i> Event QR
                   </a>
-                  <div class="collapse " id="sidebarComponents">
-                    <ul class="nav nav-sm flex-column">
-                      <li class="nav-item">
-                        <a href="components.html#alerts" class="nav-link">
-                          Alerts
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="components.html#autosizePlugin" class="nav-link">
-                          Autosize
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="components.html#avatars" class="nav-link">
-                          Avatars
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="components.html#badges" class="nav-link">
-                          Badges
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="components.html#breadcrumb" class="nav-link">
-                          Breadcrumb
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="components.html#buttons" class="nav-link">
-                          Buttons
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="components.html#button-group" class="nav-link">
-                          Button group
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="components.html#cards" class="nav-link">
-                          Cards
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="components.html#charts" class="nav-link">
-                          Charts
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="components.html#dropdowns" class="nav-link">
-                          Dropdowns
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="components.html#forms" class="nav-link">
-                          Forms
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="components.html#icons" class="nav-link">
-                          Icons
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="components.html#kanban" class="nav-link">
-                          Kanban
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="components.html#lists" class="nav-link">
-                          Lists
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="components.html#map" class="nav-link">
-                          Map
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="components.html#modal" class="nav-link">
-                          Modal
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="components.html#navs" class="nav-link">
-                          Navs
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="components.html#navbarExample" class="nav-link">
-                          Navbar
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="components.html#page-headers" class="nav-link">
-                          Page headers
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="components.html#pagination" class="nav-link">
-                          Pagination
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="components.html#popovers" class="nav-link">
-                          Popovers
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="components.html#progress" class="nav-link">
-                          Progress
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="components.html#social-posts" class="nav-link">
-                          Social post
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="components.html#spinners" class="nav-link">
-                          Spinners
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="components.html#tables" class="nav-link">
-                          Tables
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="components.html#toasts" class="nav-link">
-                          Toasts
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="components.html#tooltips" class="nav-link">
-                          Tooltips
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="components.html#typography" class="nav-link">
-                          Typography
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="components.html#utilities" class="nav-link">
-                          Utilities
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </li> -->
-              </ul> 
+                </li>             
+                <li class="nav-item">
+                  <a class="nav-link " href="{% url 'event-settings' event.slug %}">
+                    <i class="fe fe-settings"></i> Event Settings
+                  </a>
+                </li> 
+                
+                <li class="nav-item">
+                  <a class="nav-link " href="{% url 'event-detail' event.slug %}" target="_blank">
+                    <i class="fe fe-eye"></i> View Event
+                  </a>
+                </li> 
+                </ul> 
       
               <!-- Push content down -->
               <div class="mt-auto"></div>
@@ -1266,210 +1059,49 @@
       
               <!-- Navigation -->
               <ul class="navbar-nav">
-                <li class="nav-item dropright">
-                  <a class="nav-link dropdown-toggle active" id="sidebarSmallDashboards" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" title="Dashboards">
-                    <i class="fe fe-home"></i> <span class="d-md-none">Dashboards</span>
+
+                <li class="nav-item">
+                    <a class="nav-link text-nowrap text-truncate" href="{% url 'event-dashboard' event.slug %}" role="button" 
+                    aria-controls="sidebarDashboards" style="display: block;">
+                        <i class="fe fe-activity"></i>
+                         {{ event.name }}
+                    </a>
+                </li>   
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'event-information' event.slug %}" role="button" aria-controls="sidebarDashboards">
+                      <i class="fe fe-info"></i>
+                         Basic Information
+                    </a>
+                </li>           
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'ticket-list' event.slug %}" role="button" aria-controls="sidebarDashboards">
+                      <i class="fe fe-tag"></i>
+                       Tickets
+                    </a>
+                </li>               
+                
+
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'event-orders' event.slug %}" role="button" aria-controls="sidebarDashboards">
+                    <i class="fe fe-list"></i> Manage Orders
                   </a>
-                  <ul class="dropdown-menu" aria-labelledby="sidebarSmallDashboards">
-                    <li class="dropdown-header d-none d-md-block">
-                      <h6 class="text-uppercase mb-0">Dashboards</h6>
-                    </li>
-                    <li>
-                      <a class="dropdown-item active" href="index.html">
-                        Default
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item " href="dashboard-alt.html">
-                        Alternative
-                      </a>
-                    </li>
-                  </ul>
                 </li>
-                <li class="nav-item dropright">
-                  <a class="nav-link dropdown-toggle " id="sidebarSmallPages" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                    <i class="fe fe-file"></i> <span class="d-md-none">Pages</span>
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="sidebarSmallPages">
-                    <li class="dropdown-header d-none d-md-block">
-                      <h6 class="text-uppercase mb-0">Pages</h6>
-                    </li>
-                    <li class="dropright">
-                      <a class="dropdown-item dropdown-toggle " href="#" id="sidebarSmallProfile" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Profile
-                      </a>
-                      <div class="dropdown-menu" aria-labelledby="sidebarSmallProfile">
-                        <a class="dropdown-item " href="profile-posts.html">
-                          Posts
-                        </a>
-                        <a class="dropdown-item " href="profile-groups.html">
-                          Groups
-                        </a>
-                        <a class="dropdown-item " href="profile-projects.html">
-                          Projects
-                        </a>
-                        <a class="dropdown-item " href="profile-files.html">
-                          Files
-                        </a>
-                        <a class="dropdown-item " href="profile-subscribers.html">
-                          Subscribers
-                        </a>
-                      </div>
-                    </li>
-                    <li class="dropright">
-                      <a class="dropdown-item dropdown-toggle " href="#" id="sidebarSmallProject" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Project
-                      </a>
-                      <div class="dropdown-menu" aria-labelledby="sidebarSmallProject">
-                        <a class="dropdown-item " href="project-overview.html">
-                          Overview
-                        </a>
-                        <a class="dropdown-item " href="project-files.html">
-                          Files
-                        </a>
-                        <a class="dropdown-item " href="project-reports.html">
-                          Reports
-                        </a>
-                        <a class="dropdown-item " href="project-new.html">
-                          New project
-                        </a>
-                      </div>
-                    </li>
-                    <li class="dropright">
-                      <a class="dropdown-item dropdown-toggle " href="#" id="sidebarSmallTeam" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Team
-                      </a>
-                      <div class="dropdown-menu" aria-labelledby="sidebarSmallTeam">
-                        <a class="dropdown-item " href="team-overview.html">
-                          Overview
-                        </a>
-                        <a class="dropdown-item " href="team-projects.html">
-                          Projects
-                        </a>
-                        <a class="dropdown-item " href="team-members.html">
-                          Members
-                        </a>
-                        <a class="dropdown-item " href="team-new.html">
-                          New team
-                        </a>
-                      </div>
-                    </li>
-                    <li class="dropright">
-                      <a class="dropdown-item dropdown-toggle " href="#" id="sidebarSmallFeed" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Feed
-                      </a>
-                      <div class="dropdown-menu" aria-labelledby="sidebarSmallFeed">
-                        <a class="dropdown-item " href="feed.html">
-                          Platform
-                        </a>
-                        <a class="dropdown-item " href="social-feed.html">
-                          Social
-                        </a>
-                      </div>
-                    </li>
-                    <li>
-                      <a class="dropdown-item " href="kanban.html">
-                        Kanban
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item " href="orders.html">
-                        Orders
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item " href="settings.html">
-                        Settings
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item " href="invoice.html">
-                        Invoice
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item " href="pricing.html">
-                        Pricing
-                      </a>
-                    </li>
-                  </ul>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#sidebarAuth"  role="button" aria-controls="sidebarDashboards">
+                      <i class="fe fe-user-plus"></i> Invitations
+                    </a>
                 </li>
-                <li class="nav-item dropright">
-                  <a class="nav-link dropdown-toggle" id="sidebarSmallAuth" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                    <i class="fe fe-user"></i> <span class="d-md-none">Auth</span>
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="sidebarSmallAuth">
-                    <li class="dropdown-header d-none d-md-block">
-                      <h6 class="text-uppercase mb-0">Authentication</h6>
-                    </li>
-                    <li class="dropright">
-                      <a class="dropdown-item dropdown-toggle" href="#" id="sidebarSmallSignIn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Sign in
-                      </a>
-                      <div class="dropdown-menu" aria-labelledby="sidebarSmallSignIn">
-                        <a class="dropdown-item" href="sign-in-cover.html">
-                          Cover
-                        </a>
-                        <a class="dropdown-item" href="sign-in-illustration.html">
-                          Illustration
-                        </a>
-                        <a class="dropdown-item" href="sign-in-basics.html">
-                          Basic
-                        </a>
-                      </div>
-                    </li>
-                    <li class="dropright">
-                      <a class="dropdown-item dropdown-toggle" href="#" id="sidebarSmallSignUp" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Sign up
-                      </a>
-                      <div class="dropdown-menu" aria-labelledby="sidebarSmallSignUp">
-                        <a class="dropdown-item" href="sign-up-cover.html">
-                          Cover
-                        </a>
-                        <a class="dropdown-item" href="sign-up-illustration.html">
-                          Illustration
-                        </a>
-                        <a class="dropdown-item" href="sign-up.html">
-                          Basic
-                        </a>
-                      </div>
-                    </li>
-                    <li class="dropright">
-                      <a class="dropdown-item dropdown-toggle" href="#" id="sidebarSmallPassword" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Password reset
-                      </a>
-                      <div class="dropdown-menu" aria-labelledby="sidebarSmallPassword">
-                        <a class="dropdown-item" href="password-reset-cover.html">
-                          Cover
-                        </a>
-                        <a class="dropdown-item" href="password-reset-illustration.html">
-                          Illustration
-                        </a>
-                        <a class="dropdown-item" href="password-reset.html">
-                          Basic
-                        </a>
-                      </div>
-                    </li>
-                    <li class="dropright">
-                      <a class="dropdown-item dropdown-toggle" href="#" id="sidebarSmallError" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Error
-                      </a>
-                      <div class="dropdown-menu" aria-labelledby="sidebarSmallError">
-                        <a class="dropdown-item" href="error-illustration.html">
-                          Illustration
-                        </a>
-                        <a class="dropdown-item" href="error.html">
-                          Basic
-                        </a>
-                      </div>
-                    </li>
-                  </ul>
-                </li>
+
+
                 <li class="nav-item d-md-none">
                   <a class="nav-link" href="#sidebarModalActivity" data-toggle="modal">
                    <span class="fe fe-bell"></span> Notifications
                   </a>
                 </li>
+                
               </ul>
 
               <!-- Divider -->
@@ -2821,18 +2453,22 @@
     <script src="{% static 'events/dashboard/js/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'events/dashboard/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'events/dashboard/libs/autosize/dist/autosize.min.js' %}"></script>
-    <script src="{% static 'events/dashboard/libs/chart.js/dist/Chart.min.js' %}"></script>
     <script src="{% static 'events/dashboard/libs/flatpickr/dist/flatpickr.min.js' %}"></script>
-    <script src="{% static 'events/dashboard/libs/jquery-mask-plugin/dist/jquery.mask.min.js' %}"></script>
-    <script src="{% static 'events/dashboard/libs/list.js/dist/list.min.js' %}"></script>
     <script src="{% static 'events/dashboard/libs/select2/dist/js/select2.min.js' %}"></script>
-    <script src="{% static 'events/dashboard/libs/chart.js/Chart.extension.min.js' %}"></script>
+    <script src="{% static 'events/dashboard/libs/magnific/magnific.min.js' %}"></script>
 
     <!-- Map -->
     <!-- <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script> -->
 
     <!-- Theme JS -->
     <script src="{% static 'events/dashboard/js/theme.min.js' %}"></script>
+    <script>
+      $(document).ready(function(){
+          $('.qr-link').magnificPopup({
+            type: 'image'
+          });
+      });
+    </script>
 
   </body>
 </html>        

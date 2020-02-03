@@ -170,6 +170,7 @@ class Event(models.Model):
     payout = models.CharField(verbose_name="Event Payout Method", choices=payout_choices, max_length=10, null=True, blank=True)
     is_active = models.BooleanField(verbose_name="Active Event", default=False)
     is_hidden = models.BooleanField(verbose_name="Hidden Event", default=False)
+    has_order = models.BooleanField(verbose_name="Hidden Event", default=False)
 
     def __str__(self):
         return self.name

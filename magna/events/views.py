@@ -3,10 +3,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Sum
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic import ListView
 from .models import Event, Ticket, Organizer
-from .forms import EventCreationForm, TicketCreationForm
+from .forms import EventCreationForm, TicketCreationForm, EventUpdateForm
 
 
 
@@ -143,6 +143,17 @@ def EventPayout(request, slug):
     return render(request, 'events/dashboard/payout.html', context)
 
 
+def EventInformation(request, slug):
+    event = get_object_or_404(Event, slug=slug)
+    context = {
+        'event' : event
+    }
+    return render(request, 'events/dashboard/event_information.html', context)
+
+class EventInformationView(UpdateView):
+    model = Event
+    form_class = EventUpdateForm
+    template_name = 'events/dashboard/event_information.html'
 
 def EventOrders(request, slug):
     event = get_object_or_404(Event, slug=slug)
