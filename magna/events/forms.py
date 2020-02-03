@@ -23,7 +23,7 @@ class TicketCreationForm(ModelForm):
 class EventUpdateForm(ModelForm):
     class Meta:
         model = Event
-        fields = ['name', 'organizer', 'description']
+        fields = ['name', 'organizer', 'category', 'description', 'currency', 'is_active', 'is_hidden']
         widgets = {
             'description': SummernoteWidget(),
         }

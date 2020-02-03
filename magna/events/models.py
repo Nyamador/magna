@@ -154,6 +154,12 @@ class Event(models.Model):
         ('Bank', 'Bank Deposit'),
         ('Voda', 'Vodafone Cash'),
     )
+
+    currency_choices = (
+        ('GHS', 'GHS'),
+        ('NGN', 'NGN')
+    )
+
     slug = models.SlugField(verbose_name="Slug", max_length=100, unique=True, blank=True, null=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     category = models.CharField(verbose_name="Event Category", choices=category_list, max_length=10)
@@ -161,6 +167,7 @@ class Event(models.Model):
     organizer = models.ForeignKey(Organizer, on_delete=models.CASCADE)
     description = models.CharField(verbose_name="Event Description", max_length=50000, blank=True, null=True)
     venue = models.CharField(verbose_name="Venue", max_length=255)
+    currency = models.CharField(verbose_name="Event Currency", max_length=50, choices =currency_choices, default="GHS" )
     start_date = models.DateField(verbose_name="Event Start Date")
     start_time = models.CharField(verbose_name="Start Time", max_length=10, choices=time_list)
     end_date = models.DateField(verbose_name="Event End Date")

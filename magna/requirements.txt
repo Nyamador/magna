@@ -3,7 +3,7 @@ algoliasearch-django==1.7.1
 certifi==2019.11.28
 chardet==3.0.4
 defusedxml==0.6.0
-Django==2.2.7
+Django==3.0.3
 django-allauth==0.40.0
 django-storages==1.8
 django-summernote==0.8.11.6
