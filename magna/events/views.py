@@ -9,6 +9,18 @@ from .models import Event, Ticket, Organizer
 from .forms import EventCreationForm, TicketCreationForm, EventUpdateForm
 
 
+class EventsListView(ListView, LoginRequiredMixin):
+    """
+    Displays a list of events created by the current user
+    """
+    model = Event
+    context_object_name = 'events'
+    template_name = 'events/events_list.html'
+
+    def get_queryset(self):
+        return Event.objects.filter(user=self.request.user)
+
+
 
 class EventCreation(LoginRequiredMixin, CreateView):
     """

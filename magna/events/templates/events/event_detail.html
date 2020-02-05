@@ -21,7 +21,7 @@
       </button>
 
       <!-- Brand -->
-      <a class="navbar-brand mr-auto" href="index.html">
+      <a class="navbar-brand mr-auto" href="{%  url 'home' %}">
         <img src="{% static 'events/dashboard/img/mglogo.png' %}" alt="..." class="navbar-brand-img">
       </a>
 
@@ -130,15 +130,16 @@
                         <h1>
                             {{ event.name }}
                         </h1>
-                        <p>Category : {{ event.category  }}</p>
                         
                         <p class="card-text">
                         {{ event.description | safe }}
                         </p>
 
-                        <h3 class="text-underline">Share With Everyone</h3>
+                        <hr>
 
-                        <a href="#" class="p-3" data-toggle="tooltip" data-placement="top" title data-original-title="Share {{ event.name}}">
+
+                        <div style="text-align: center;"> 
+                          <a href="#" class="p-3" data-toggle="tooltip" data-placement="top" title data-original-title="Share {{ event.name}}">
                             <img src="{% static 'events/dashboard/img/svg/share.svg' %}" alt="">
                         </a>
 
@@ -157,8 +158,7 @@
                         <a href="#" class="p-3" title="Share {{ event.name}} on Messenger">
                             <img src="{% static 'events/dashboard/img/svg/messenger.svg' %}" alt="">
                         </a>
-
-                        <p>Venue: {{ event.venue }}</p>
+                        </div> 
                         
 <!--                        <h1>Organizer Detail</h1>-->
 <!--                        <p>{{ event.organizer }}</p>-->
@@ -176,41 +176,43 @@
                     
                         <div class="card-header">
     
-                            <h4 class="card-header-title">
+                            <h3 class="card-header-title">
                                 Organized by {{ event.organizer }}
                                 {% block comment %}
                                 {% endblock comment %}
-                            </h4>
+                            </h3>
                             
                           </div>
 
                     <div class="card-body">
 
-                        <div clas>
+                        <h3 class="bold">
                             <span class="fe fe-calendar">
                             </span>
                               {{ event.get_start_date }} 
                               {% if event.start_date %}
                               to {{ event.get_end_date }}
                               {% endif %} 
-                        </div>
+                        </h3>
 
-                        <div>
+                        <h3>
                             <span class="fe fe-watch">
                             </span>
 
                               {{ event.start_time    }}
-                        </div>
+                        </h3>
                     
 
-                        <div>
+                        <h3>
                             <span class="fe fe-map-pin">
                             </span>
 
                             {{ event.venue }}
-                        </div>
+                        </h3>
 
-                        <!-- <h3>ABOUT US</h3>
+                        <hr>
+
+                        <h3>ABOUT US</h3>
                         <p class="card-text">
                             The Ghana Tech Summit is a 12-year initiative. The Summit aims to revitalize Ghana’s entrepreneurial economy and reposition it as a global study of catalyzed innovation within an emerging market country.
                         </p>
@@ -223,13 +225,13 @@
                         <h3>WHO ATTENDS?</h3>
                         <p class="card-text">
                             The Ghana Tech Summit is for local and international industry leaders, entrepreneurs, investors, digital marketers and creatives interested in transforming the world via entrepreneurship.
-                        </p> -->
+                        </p>
 
                          
 
                         <div class="mt-6">
                             <button class="btn btn-success col-12 lift" data-toggle="modal" data-target="#modalVerticalRight">
-                                Tickets
+                                Get Tickets
                             </button>
                         </div>
                     </div>
@@ -264,9 +266,30 @@
 
                                   <form>
                                     <div class="form-group">
-                                      <label >{{ ticket.name }}</label>
-                                      <input type="text" name="{{ ticket.name }}" class="form-control">
+                                      <p>NAME: {{ ticket.name }}</p>
+                                      <p>PRICE: {{ event.currency }} {{ ticket.price }}</p>
                                     </div>
+
+                                    <div class="form-group">
+                                      <label>Quantity </label>
+                                      <select name="ticket-quantity" class="form-control" data-toggle="select">
+                                        <option value selected>----</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+
+                                      </select>
+
+                                    </div>
+
+                                    <hr>
 
                                     
                                   </form>

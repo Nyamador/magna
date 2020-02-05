@@ -8,6 +8,7 @@ Urls for Event Organizer
 """
 urlpatterns = [
     path('create/', views.EventCreation.as_view() , name='create-event'),
+    path('all/', views.EventsListView.as_view(), name='event-list'),
     path('<slug:slug>/manage/', views.ManageView, name='event-dashboard'),
     path('<slug:slug>/manage/info', views.EventInformationView.as_view(), name='event-information'),
     path('<slug:slug>/manage/settings/', views.EventSettings, name='event-settings'),

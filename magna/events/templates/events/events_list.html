@@ -1,0 +1,78 @@
+{% extends 'events/dashboard/_base.html' %}
+
+{% block content %}
+<div class="main-content">
+    <div class="container">
+        <div class="row justify-content-center">
+
+
+            
+            <div class="col-12 col-lg-10 col-xl-8">
+                <div class="header mt-md-5">
+                    <div class="header-body">
+                      <div class="row align-items-center">
+                        <div class="col">
+                          
+      
+                          <!-- Title -->
+                          
+                          <h1 class="header-title">
+                                  <i class="fe fe-calendar"></i>
+                            Your Events
+                          </h1>
+      
+                        </div>
+                        <div class="">
+                            <a href="{% url 'home' %}" class="text-muted"><span class="fe fe-x-circle mr-4"> Close</span></a>
+                          </div>
+                      </div> <!-- / .row -->
+                    
+
+                    </div>
+                  </div>
+
+                  {% for event in events %}                  
+                  <div class="card">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-auto">
+                                <h4>{{ event.name }}</h4> 
+                            </div>
+
+                            {% if event.is_active %}
+                            <div class="col ml-n2">
+                                <span class="badge badge-success mb-2">Published</span>
+                            </div>
+                            {% else %}
+                            <div class="col ml-n2">
+                                <span class="badge badge-danger mb-2">Unpublished</span>
+                            </div>
+                            {% endif %}
+
+                            <div class="col-auto ml-auto">
+                                <a href="{% url 'event-detail' event.slug %}" title="{{ event.name }} detail page" 
+                                class="text-muted" >
+                                    <i class="fe fe-eye">                                    
+                                    </i>
+                                </a>
+                            </div>
+
+                            <div class="col-auto ml-auto">
+                                <a href="{% url 'event-dashboard' event.slug %}" title="{{ event.name }} dashboard" 
+                                class="text-muted" >
+                                    <i class="fe fe-settings">                                    
+                                    </i>
+                                </a>
+                            </div>                            
+
+                        </div>
+                        
+                    </div>
+                  </div>
+                  {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>                  
+{% endblock content %}
