@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Sum
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic.edit import CreateView, UpdateView
@@ -47,17 +48,28 @@ def EventDetailView(request, slug):
     """
     Event Detail View for Attendee
     """
-    event = get_object_or_404(Event, slug=slug)
+    event = get_object_or_404(Event, slug=slug) 
+    # Get the ticket list for tickets related to the event queryset
     tickets = event.ticket_set.all()
     context = {
         'event': event,
         'tickets': tickets
     }
-
     # Link Tracking
     # referrer = request.GET['mg_source']
     # channel = request.GET['mg_channel']
     return render(request, 'events/event_detail.html', context)
+
+def GoLive(request, slug):
+    """
+    Changes the event status to Live
+    """
+    event = get_object_or_404(Event, slug=slug)
+    event.is_active = True
+    event.save()
+
+    return HttpResponse(f'Your event: {event} = > {event.is_active}')
+
 
 
 def user_is_author(user,event):
