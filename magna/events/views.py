@@ -53,11 +53,16 @@ def EventDetailView(request, slug):
     tickets = event.ticket_set.all()
     context = {
         'event': event,
-        'tickets': tickets
+        'tickets': tickets,
+        'range': range(10)
     }
     # Link Tracking
     # referrer = request.GET['mg_source']
     # channel = request.GET['mg_channel']
+    # Creating an order
+    # 1. Show the list of tickets for the event
+    # 2. Set the maxmimum ticket order quantity to the tickets max value
+    # 3. To create an order 
     return render(request, 'events/event_detail.html', context)
 
 def GoLive(request, slug):
@@ -78,6 +83,7 @@ def user_is_author(user,event):
     """
     event = get_object_or_404(Event, slug=slug)
     return user == user
+
 
 # @user_passes_test(user_is_author)
 def ManageView(request, slug):
@@ -174,10 +180,12 @@ def EventInformation(request, slug):
     }
     return render(request, 'events/dashboard/event_information.html', context)
 
+
 class EventInformationView(UpdateView):
     model = Event
     form_class = EventUpdateForm
     template_name = 'events/dashboard/event_information.html'
+
 
 def EventOrders(request, slug):
     event = get_object_or_404(Event, slug=slug)
