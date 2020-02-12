@@ -53,8 +53,7 @@ def EventDetailView(request, slug):
     tickets = event.ticket_set.all()
     context = {
         'event': event,
-        'tickets': tickets,
-        'range': range(10)
+        'tickets': tickets
     }
     # Link Tracking
     # referrer = request.GET['mg_source']
