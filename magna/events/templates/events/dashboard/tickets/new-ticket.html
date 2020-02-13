@@ -20,11 +20,6 @@
                                   </h1>
                             </div>
         
-                            <div class="col">
-                                <div>
-                                    <a href="/" class="text-muted"><span class="fe fe-x-circle mr-4"> Close</span></a>
-                                  </div>
-                            </div>
                         </div>
                   
                     </div>
@@ -92,11 +87,24 @@
                             </div>
 
 
-                        <div class="form-group">
-                            <label for="{{ form.sales_channel.id_for_label }}">{{ form.sales_channel.label }}</label>
-                            {% render_field form.sales_channel|add_class:'form-control'|add_error_class:"is-invalid" %}
-                            {{ form.organizer.sales_channel }}
-                    </div>
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="{{ form.sales_channel.id_for_label }}">{{ form.sales_channel.label }}</label>
+                                    {% render_field form.sales_channel|add_class:'form-control'|add_error_class:"is-invalid" %}
+                                    {{ form.organizer.sales_channel }}
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="{{ form.max_order.id_for_label }}">{{ form.max_order.label }}</label>
+                                    {% render_field form.max_order|add_class:'form-control'|add_error_class:"is-invalid" %}
+                                    {{ form.organizer.max_order }}
+                                </div>
+                            </div>                            
+
+                        </div>
 
                     {% endwith %}
                     <input type="submit" class="primaryAction btn btn-lg btn-block btn-primary mb-3" value="Create Ticket">
