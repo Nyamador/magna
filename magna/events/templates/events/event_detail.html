@@ -275,7 +275,7 @@
                                       <label>Quantity </label>
                                       <select name="ticket-quantity" class="form-control" data-toggle="select">
                                         <option value selected>----</option>
-                                        {% for i in ticket.quantity|add:"1"|times %}
+                                        {% for i in ticket.max_order|add:"1"|times %}
                                         <option value="1">{{ i }}</option>
                                         {% endfor %}
                                         <!-- <option value="2">2</option>

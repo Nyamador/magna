@@ -228,6 +228,7 @@ class Ticket(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     name = models.CharField(verbose_name="Ticket Name", max_length=50)
     quantity = models.PositiveIntegerField(verbose_name="Quantity")
+    max_order = models.PositiveIntegerField(verbose_name="Maximum Order", default=10)
     price = models.DecimalField(verbose_name="Ticket Price", decimal_places=2, max_digits=10)
     description = models.CharField(verbose_name="Ticket Description", max_length=2500, null=True, blank=True)
     # Ticket per order

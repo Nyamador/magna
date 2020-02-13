@@ -59,9 +59,9 @@ def EventDetailView(request, slug):
     # referrer = request.GET['mg_source']
     # channel = request.GET['mg_channel']
     # Creating an order
-    # 1. Show the list of tickets for the event
-    # 2. Set the maxmimum ticket order quantity to the tickets max value
-    # 3. To create an order 
+    # 1. Show the list of tickets for the event [.]
+    # 2. Set the maxmimum ticket order quantity to the tickets max value [.]
+    # 3. To create an order [.]
     return render(request, 'events/event_detail.html', context)
 
 def GoLive(request, slug):
