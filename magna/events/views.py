@@ -10,6 +10,28 @@ from .models import Event, Ticket, Organizer
 from .forms import EventCreationForm, TicketCreationForm, EventUpdateForm
 
 
+#     data = {
+# 	'PBFPubKey'	 : 'FLWPUBK_TEST-c8bb1d6e02ef6a75ddabf41b42c0eac8-X',
+# 	'currency' : 'GHS',
+# 	'amount': '100',
+# 	# 'txref': 'GBG-ACCRA',
+#     'txref': payload['txref'],
+# 	# 'customer_email': 'nyamadordesmond@gmail.com',
+#     'customer_email' : payload['customer_email'],
+# 	# 'customer_phone' : '0206335155',
+#     'customer_phone' : payload['customer_phone'],
+# 	'customer_firstname' : 'Desmond',
+# 	'customer_lastname' : 'Nyamador',
+# 	'pay_button_text' : 'Buy Ticket',
+# 	'custom_title' : payload['custom_title']
+# 	'redirect_url' : "http://localhost:8000/su"
+#     }
+
+#     try:
+#         req = requests.post(root_endpoint, data=data)
+#     except 
+
+
 class EventsListView(ListView, LoginRequiredMixin):
     """
     Displays a list of events created by the current user
@@ -192,3 +214,6 @@ def EventOrders(request, slug):
         'event': event
     } 
     return render(request, 'events/dashboard/orders.html', context)  
+
+
+# def OrderSuccessView(request):
