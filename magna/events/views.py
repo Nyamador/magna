@@ -83,7 +83,7 @@ def EventDetailView(request, slug):
     # Creating an order
     # 1. Show the list of tickets for the event [.]
     # 2. Set the maxmimum ticket order quantity to the tickets max value [.]
-    # 3. To create an order [.]
+    # 3. To create an order: save an order model , reduce the stock count if payment was successful or event type is free [.]
     return render(request, 'events/event_detail.html', context)
 
 def GoLive(request, slug):
